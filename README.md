@@ -21,3 +21,11 @@ maquetter le mobile
 responsive : mobile first puis desktop avec les medias
 
 - [ ] Etape 5 : JS
+
+- [ ] Etape 6 : Features bonus
+
+ajout des villes dynamiques<br>
+ajout d'une horloge analogique<br>
+gestion des event/ voir tuto/ delay<br>
+Wireframe validée<br>
+
