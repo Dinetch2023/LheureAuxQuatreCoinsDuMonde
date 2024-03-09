@@ -29,3 +29,7 @@ ajout d'une horloge analogique<br>
 gestion des event/ voir tuto/ delay<br>
 Wireframe validée<br>
 
+
+Liste de ressources et idées pour gérer la date : 
+- 
+
