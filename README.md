@@ -25,7 +25,7 @@ responsive : mobile first puis desktop avec les medias
 - [ ] Etape 6 : Features bonus
 
 ajout des villes dynamiques<br>
-ajout d'une horloge analogique<br>
+--> ON est sur la bonne voie : ajout d'une horloge analogique<br>
 gestion des event/ voir tuto/ delay<br>
 Wireframe validée<br>
 
