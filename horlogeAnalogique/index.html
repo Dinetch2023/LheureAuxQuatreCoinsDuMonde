@@ -1,7 +1,3 @@
-<script type="text/javascript">
-      function test() {return '<p>Bonjour</p>';} 
-</script>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,8 +12,8 @@
       <main>
             <h1>Horloge mondiale</h1>
             <section>
-                  <h2 >Ville</h2>
-                  <article class="clock">
+                  <h2 id="city" ></h2>
+                  <article id="clock">
                         <div>12</div>
                         <div>1</div>
                         <div>2</div>
@@ -30,14 +26,14 @@
                         <div>9</div>
                         <div>10</div>
                         <div>11</div>
-                        <div class="hour"></div>
-                        <div class="minute"></div>
-                        <div class="second"></div>
-                        <div class="round"></div>
+                        <div id="hour"></div>
+                        <div id="minute"></div>
+                        <div id="second"></div>
+                        <div id="round"></div>
                   </article>
-                  <p>Samedi 9 mars</p>
+                  <p id="day">Samedi 9 mars</p>
                   <p id="time"></p>
-                  <p>GMT : +1</p>
+                  <p id="zone"></p>
                   <label for="citySelect">Choisissez une ville</label>
                         <select name="cities" id="city-select">
                               <option value="">--Ville--</option>

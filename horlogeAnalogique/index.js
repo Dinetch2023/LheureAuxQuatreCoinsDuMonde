@@ -594,20 +594,36 @@ const timesZones = [
       ];
 
 
-console.log(timesZones[1]);
 
-// On crée un nouvel object new
-const date = new Date();
-// On initialise le format renvoyé de l'objet avec l'objet Intl
-const selection = new Intl.DateTimeFormat('fr-FR', {
-      dateStyle: 'full',
-      timeStyle: 'long',
-      timeZone: timesZones[12],
-    }).format(date);
+      const date = new Date();
+      // On initialise le format renvoyé de l'objet avec l'objet Intl
+      const area = new Intl.DateTimeFormat('fr-FR', {
+            dateStyle: 'full',
+            timeStyle: 'long',
+            timeZone: timesZones[459],
+      }).format(date);
+
+      //Converti les degrés en temps heure, minute, seconde
+      const areaTime = area.split(' ')[5].split(":");
+      const hour = (areaTime[0] / 24 * 360 );
+      const minute = (areaTime[1] / 60 * 360 );
+      const second = (areaTime[2] / 60 * 360 );
 
 
-//on affiche la selection et on le transforme en tableau
-const selectionArray = selection.split(' ');
-console.log(selectionArray[5])
+      //Initialise et dynamise les valeurs de l'horloge
+      const time = document.querySelector('#time');
+      const day = document.querySelector('#day');
+      const city = document.querySelector('#city');
+      const zone = document.querySelector('#zone');
+      const hourHand = document.querySelector('#hour');
+      const minuteHand = document.querySelector('#minute');
+      const secondHand = document.querySelector('#second');
 
+      day.innerHTML = `${area.split(' ')[0]} ${area.split(' ')[1]} ${area.split(' ')[2]} ${area.split(' ')[3]}`
+      city.innerHTML = `${timesZones[459].split("/")[1]}`
+      time.innerHTML = `${area.split(' ')[5]}`;
+      zone.innerHTML = `${area.split(' ')[6]}`;
+      hourHand.style.transform = `rotate(${hour}deg)`;
+      minuteHand.style.transform = `rotate(${minute}deg)`;
+      secondHand.style.transform = `rotate(${second}deg)`;
 
