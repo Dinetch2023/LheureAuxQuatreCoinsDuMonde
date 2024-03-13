@@ -20,7 +20,7 @@
 
             const secondsRatio = (seconds / 60);
             const minutesRatio = ((secondsRatio + minutes) / 60);
-            const hoursRatio = ((minutesRatio + hours) / 24);
+            const hoursRatio = ((minutesRatio + hours) / 12);
 
             const secondsDegres = (secondsRatio * 360);
             const minutesDegres = (minutesRatio * 360);
@@ -30,9 +30,10 @@
       };
 
       results = setDegres();
+      console.log(results);
       
       //Initialisation de la rotation
-      const rotation = function setRotation () {
+      function setRotation () {
             const hourHand = document.querySelector('#hour');
             const minuteHand = document.querySelector('#minute');
             const secondHand = document.querySelector('#second');
@@ -43,11 +44,7 @@
 
       };
 
-      const update = setInterval(rotation, 1000);
-
-      function myStopFunction() {
-            clearInterval(update);
-          }
+     setRotation();
 
 
 // const timesZones = [
