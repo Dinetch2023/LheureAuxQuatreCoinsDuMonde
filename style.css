@@ -123,6 +123,10 @@ h2 {
     gap: 8px;
 }
 
+.cities h2, .cities p {
+    text-shadow: 0 0 20px var(--fourth-color);
+  }
+
 .Paris{
     background-image: url("https://placehold.co/1000x1000/EEE/31343C");
 
