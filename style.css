@@ -1,0 +1,187 @@
+/* Imports */
+
+@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap%27);
+@import url(https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400&family=Playfair+Display:wght@600&display=swap);
+
+/* Initialisation */
+:root {
+    --primary-color: #694873; 
+    --secondary-color: #dbdbdb; 
+    --third-color: #030303; 
+    --fourth-color: #eaeaea;
+    --title-font: "Playfair Display", serif;
+    --text-font: "Fira Sans", serif;
+}
+
+/* Styles globaux */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+section {
+    width: 80vw;
+    height: 100vh;
+}
+
+/* Styles header */
+
+header {
+    display: flex;
+    width: 20vw;
+    align-content: right;
+}
+
+nav {
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column-reverse;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    color: var(--secondary-color);
+    font-family: var(--text-font);
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 3.5rem;
+    display: none;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo {
+    width: 15vw;
+    height: auto;
+    margin: 15px;
+}
+
+.boxLogo {
+    
+    flex-grow: 3;
+}
+
+.noName {
+    flex-grow: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h1 {
+   color: var(--primary-color);
+    font-size: 2.5rem;
+    font-family: var(--title-font);
+    padding: 30px;
+}
+
+.noName p {
+    color: var(--primary-color);
+    font-family: var(--text-font);
+    font-size: 1.5rem;
+    border-left: 2px solid var(--primary-color);
+    margin: 30px;
+    padding: 10px;
+}
+
+.time {
+    font-size: 4rem;
+    line-height: 7.5rem;
+}
+
+/* styles cards */
+
+h2 {
+    font-family:  var(--text-font);
+    
+}
+
+.cities {
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.Paris{
+    background-image: url("https://placehold.co/1000x1000/EEE/31343C");
+
+}
+.Washington{
+    background-image: url("https://placehold.co/1000x1000/EEE/31343C");
+
+}
+.Mexico{
+    background-image: url("https://placehold.co/1000x1000/EEE/31343C");
+
+}
+
+.Sydney{
+    background-image: url("https://placehold.co/1000x1000/EEE/31343C");
+
+}
+
+.Tokyo{
+    background-image: url("https://placehold.co/1000x1000/EEE/31343C");
+
+}
+
+.LeCaire{
+    background-image: url("https://placehold.co/1000x1000/EEE/31343C");
+  
+}
+
+.end{
+    background-color: red;
+    display: grid;
+    grid-template-areas: 
+        "a"
+        "b"
+        "c"
+        "d";
+    gap:8px;
+    
+}
+
+.end article:nth-child(1) {
+    background-color: white;
+    grid-area: 'a';
+
+}; 
+
+.end article:nth-child(2) {
+    background-color: white;
+    grid-area: 'b';
+}; 
+
+.end article:nth-child(3) {
+    background-color: white;
+    grid-area: 'c';
+}; 
+
+.end article:nth-child(4) {
+    background-color: white;
+    grid-area: 'd';
+}; 
+
+
