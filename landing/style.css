@@ -54,10 +54,9 @@ nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    color: var(--secondary-color);
     font-family: var(--text-font);
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 3.5rem;
 }
 
@@ -85,8 +84,9 @@ nav ul {
     height: 2rem;
 }
 
-.round a {
+li a {
     display: block;
+    color: var(--secondary-color) ;
     text-decoration: none;
 }
 
@@ -123,6 +123,7 @@ nav ul {
     flex-direction: column;
     justify-content: flex-start;
     margin: 3rem;
+    
 }
 
 @media screen and (min-width:992px ) {
@@ -161,26 +162,24 @@ h2 {
     
 }
 
-.cities {
+.city {
+    position: relative; 
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
-    height: 100vh;
+    justify-content: center;
 }
 
-.cities .time {
+.city .time {
     position: relative;
     font-size: 8rem;
     font-family: var(--text-font);
     text-shadow: 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color);
 }
 
-.cities h2  {
+.city h2  {
     position: relative;
     font-size: 3rem;
     font-weight: 400;
@@ -189,17 +188,7 @@ h2 {
 
 
 
-.paris{
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.paris::before {    
+#paris::before {    
     content: "";
     background-image: url("../assets/Paris_jour.png");
     background-size: cover;
@@ -213,17 +202,8 @@ h2 {
 }
 
 
-.washington{
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-
-.washington::before {    
+#washington::before {    
     content: "";
     background-image: url("../assets/Washington_jour.png");
     background-size: cover;
@@ -237,17 +217,7 @@ h2 {
 }
 
 
-.mexico{
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.mexico::before {    
+#mexico::before {    
     content: "";
     background-image: url("../assets/Mexico_jour.png");
     background-size: cover;
@@ -260,17 +230,7 @@ h2 {
     opacity: 0.8;
 }
 
-
-.sydney{
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sydney::before {    
+#sydney::before {    
     content: "";
     background-image: url("../assets/Sydney_jour.png");
     background-size: cover;
@@ -283,17 +243,8 @@ h2 {
     opacity: 0.8;
 }
 
-.tokyo{
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-
-.tokyo::before {    
+#tokyo::before {    
     content: "";
     background-image: url("../assets/Tokyo_jour.png");
     background-size: cover;
@@ -306,17 +257,8 @@ h2 {
     opacity: 0.8;
 }
 
-.leCaire{
-    position: relative; 
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-
-.leCaire::before {    
+#leCaire::before {    
     content: "";
     background-image: url("../assets/Le_Caire_jour.png");
     background-size: cover;
@@ -329,6 +271,21 @@ h2 {
     left: 0px;
     opacity: 0.8;
 }
+
+#cityTest::before {    
+    content: "";
+    background-image: url("../assets/Le_Caire_jour.png");
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
+}
+
 
 @media screen and (min-width:992px ) {
     .mobile {
@@ -397,7 +354,7 @@ article>h3{
 article>p{
     font-size: 4rem;
     font-family: var(--text-font);
-    color: var(--primary-color);
+    color: var(--third-color);
     margin-bottom: 20px;
 }
 

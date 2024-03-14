@@ -11,23 +11,22 @@
 		<header>
 			<nav class="navDesktop">
 				<ul>
-					<li>Desktop</li>
-					<li>Hello</li>
-					<li>Hello</li>
-					<li>A</li>
-					<li>A</li>
-					<li>A</li>
-					<li>A </li>
-					<li>A</li>
+					<li><a href="#paris">Paris</a></li>
+					<li><a href="#washington">Washington</a></li>
+					<li><a href="#mexico">Mexico</a></li>
+					<li><a href="#sydney">Sydney</a></li>
+					<li><a href="#tokyo">Tokyo</a></li>
+					<li><a href="#leCaire">Le Caire</a></li>
 				</ul>
 			</nav>
 			<nav class="navMobile">
 				<ul>
-					<li class="round"><a href="#paris"><a href="#paris">&nbsp;</a></a></li>
+					<li class="round"><a href="#paris">&nbsp;</a></li>
 					<li class="round"><a href="#washington">&nbsp;</a></li>
 					<li class="round"><a href="#mexico">&nbsp;</a></li>
 					<li class="round"><a href="#sydney">&nbsp;</a></li>
-					<li class="round"><a href="#caire">&nbsp;</a></li>
+					<li class="round"><a href="#tokyo">&nbsp;</a></li>
+					<li class="round"><a href="#leCaire">&nbsp;</a></li>
 				</ul>
 			</nav>
 		</header>
@@ -38,41 +37,44 @@
 					<h1>L'heure aux quatre coins du monde !</h1>
 					<p>
 						Chez vous il est : 
-						<span class="time" id="day">00h00</span>
+						<span class="time" >00h00</span>
 					</p>
 				</article>
 			</section>
 			<hr>
-			<section class="cities paris"  id="paris">
-				<h2>Paris</h2>
-                <p class="time">00h<br class="mobile">00</p>
+			<section class="cities">
+				<article class="city"  id="paris">
+					<h2>Paris</h2>
+					<p class="time">00h<br class="mobile">00</p>
+				</article>
+				<hr>
+				<article class="city"  id="washington">
+					<h2>Washington</h2>
+					<p class="time">00h<br class="mobile">00</p>
+				</article>
+				<hr>
+				<article class="city"  id="mexico">
+					<h2>Mexico</h2>
+					<p class="time">00h<br class="mobile">00</p>
+				</article>
+				<hr>
+				<article class="city" id="sydney">
+					<h2>Sydney</h2>
+					<p class="time">00h<br class="mobile">00</p>
+				</article>
+				<hr>
+				<article class="city"  id="tokyo">
+					<h2>Tokyo</h2>
+					<p class="time">00h<br class="mobile">00</p>
+				</article>
+				<hr>
+				<article class="city"  id="leCaire">
+					<h2>Le Caire</h2>
+					<p class="time">00h<br class="mobile">00</p>
+				</article>
 			</section>
-			<hr>
-			<section class="cities washington"  id="washington">
-				<h2>Washington</h2>
-                <p class="time">00h<br class="mobile">00</p>
-			</section>
-			<hr>
-			<section class="cities mexico"  id="mexico">
-				<h2>Mexico</h2>
-                <p class="time">00h<br class="mobile">00</p>
-			</section>
-			<hr>
-			<section class="cities sydney" id="sydney">
-				<h2>Sydney</h2>
-                <p class="time">00h<br class="mobile">00</p>
-			</section>
-			<hr>
-			<section class="cities tokyo"  id="tokyo">
-				<h2>Tokyo</h2>
-                <p class="time">00h<br class="mobile">00</p>
-			</section>
-			<hr>
-			<section class="cities leCaire"  id="caire">
-				<h2>Le Caire</h2>
-                <p class="time">00h<br class="mobile">00</p>
-			</section>
-			<section class="cities leCaire"  id="caire">
+
+			<section id="cityTest" class="city">
 				<h2>Test</h2>
                 <article id="clock">
 					<div>12</div>
@@ -118,5 +120,6 @@
 			</section>
 		</main>
 	<script src="../horlogeAnalogique/index.js"></script>
+	<!-- <script src="templates.js" type="module"></script> -->
 	</body>
 </html>

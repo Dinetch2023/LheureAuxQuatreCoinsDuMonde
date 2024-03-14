@@ -17,8 +17,8 @@
        * 2/ modifier le dom avec setDate("de-DE");
        */
 
-      const day = document.querySelector("#day")
-      day.innerHTML = setDate('fr-FR');
+      // const day = document.querySelector("#day")
+      // day.innerHTML = setDate('fr-FR');
 
       function init() {
             setRotation(setDegres());
