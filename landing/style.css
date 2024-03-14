@@ -18,6 +18,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
+    font-family: var(--text-font);
 }
 
 body {
@@ -25,13 +26,11 @@ body {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    height: 100%;
 }
 
 main {
     width: 80vw!important;
-    
-
-
 }
 
 /* Styles header */
@@ -40,17 +39,15 @@ header {
     background-color: var(--primary-color);
     display: flex;
     width: 20vw;
-    height: 100vh;
+    height: auto;
     flex-direction: column;
     align-items: center;
 }
 
 nav {
     background-color: var(--primary-color);
-    display: flex;
+    top: 25%;
     position: fixed;
-    flex-direction: column-reverse;
-    justify-content: center;
 }
 
 nav ul {
@@ -62,12 +59,46 @@ nav ul {
     font-size: 2rem;
     font-weight: 300;
     line-height: 3.5rem;
+}
+
+.navMobile {
+    display: block;
+    padding: 0.5rem;
+    border-radius: 20rem;
+}
+
+.navMobile ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3.8rem;
+}
+
+.navDesktop {
     display: none;
 }
 
+
+.round {
+    border-radius: 100%;
+    background-color: var(--secondary-color);
+    width: 2rem;
+    height: 2rem;
+}
+
+.round a {
+    display: block;
+    text-decoration: none;
+}
+
+
+
 @media screen and (min-width:992px ) {
-    nav ul {
-        display: block;
+    .navMobile {
+        display: none;
+    }
+
+    .navDesktop {
+        display: inline-block;
     }
 
 }
@@ -86,10 +117,8 @@ nav ul {
     max-width: 200px;
 }
 
-
-
 .titleHome {
-    
+    flex-grow: 3;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -101,7 +130,6 @@ nav ul {
     margin-left: 10rem;
     }
 
-  
 
 }
 
@@ -118,6 +146,7 @@ h1 {
     font-size: 1.5rem;
     border-left: 2px solid var(--primary-color);
     padding: 30px;
+    word-break: break-word;
 }
 
 .titleHome p span {
@@ -125,7 +154,7 @@ h1 {
     font-family: var(--text-font);
 }
 
-/* styles cards */
+/* styles section villes majeures */
 
 h2 {
     font-family:  var(--text-font);
@@ -146,7 +175,6 @@ h2 {
 
 .cities .time {
     position: relative;
-    padding-bottom: 20vh;
     font-size: 8rem;
     font-family: var(--text-font);
     text-shadow: 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color);
@@ -154,7 +182,6 @@ h2 {
 
 .cities h2  {
     position: relative;
-    padding-top: 20vh;
     font-size: 3rem;
     font-weight: 400;
     text-shadow: 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color);
@@ -174,8 +201,9 @@ h2 {
 
 .paris::before {    
     content: "";
-    background-image: url("images/Paris_jour.png");
+    background-image: url("../assets/Paris_jour.png");
     background-size: cover;
+    background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -197,8 +225,9 @@ h2 {
 
 .washington::before {    
     content: "";
-    background-image: url("images/Washington_jour.png");
+    background-image: url("../assets/Washington_jour.png");
     background-size: cover;
+    background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -220,8 +249,9 @@ h2 {
 
 .mexico::before {    
     content: "";
-    background-image: url("images/Mexico_jour.png");
+    background-image: url("../assets/Mexico_jour.png");
     background-size: cover;
+    background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -242,8 +272,9 @@ h2 {
 
 .sydney::before {    
     content: "";
-    background-image: url("images/Sydney_jour.png");
+    background-image: url("../assets/Sydney_jour.png");
     background-size: cover;
+    background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -264,8 +295,9 @@ h2 {
 
 .tokyo::before {    
     content: "";
-    background-image: url("images/Tokyo_jour.png");
+    background-image: url("../assets/Tokyo_jour.png");
     background-size: cover;
+    background-position: center;
     position: absolute;
     top: 0px;
     right: 0px;
@@ -286,9 +318,11 @@ h2 {
 
 .leCaire::before {    
     content: "";
-    background-image: url("images/Le_Caire_jour.png");
+    background-image: url("../assets/Le_Caire_jour.png");
     background-size: cover;
+    background-position: center;
     position: absolute;
+
     top: 0px;
     right: 0px;
     bottom: 0px;
@@ -298,7 +332,7 @@ h2 {
 
 @media screen and (min-width:992px ) {
     .mobile {
-        display: block; 
+        display: none; 
     }
 }
 
@@ -316,7 +350,6 @@ h2 {
         "d"
         "e";
     gap:3rem;
-    height: 100vh;
     
 }
 

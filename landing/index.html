@@ -4,13 +4,14 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="style.css" rel="stylesheet">
+		<link rel="stylesheet" href="clock.css">
 		<title>DragonFly</title>
 	</head>
 	<body>
 		<header>
-			<nav>
+			<nav class="navDesktop">
 				<ul>
-					<li><span class="noMobile">A</span></li>
+					<li>Desktop</li>
 					<li>Hello</li>
 					<li>Hello</li>
 					<li>A</li>
@@ -19,52 +20,78 @@
 					<li>A </li>
 					<li>A</li>
 				</ul>
-	
-
+			</nav>
+			<nav class="navMobile">
+				<ul>
+					<li class="round"><a href="#paris"><a href="#paris">&nbsp;</a></a></li>
+					<li class="round"><a href="#washington">&nbsp;</a></li>
+					<li class="round"><a href="#mexico">&nbsp;</a></li>
+					<li class="round"><a href="#sydney">&nbsp;</a></li>
+					<li class="round"><a href="#caire">&nbsp;</a></li>
+				</ul>
 			</nav>
 		</header>
 		<main>
 			<section class="home">
-				
-					<img src="images/logo_jour.png" alt="Le logo des meilleurs" class="logo">
-				
+				<img src="../assets/logo_jour.png" alt="Le logo des meilleurs" class="logo">
 				<article class="titleHome">
 					<h1>L'heure aux quatre coins du monde !</h1>
 					<p>
 						Chez vous il est : 
-						<span class="time">00h00</span>
+						<span class="time" id="day">00h00</span>
 					</p>
 				</article>
 			</section>
 			<hr>
-			<section class="cities paris">
+			<section class="cities paris"  id="paris">
 				<h2>Paris</h2>
                 <p class="time">00h<br class="mobile">00</p>
 			</section>
 			<hr>
-			<section class="cities washington">
+			<section class="cities washington"  id="washington">
 				<h2>Washington</h2>
                 <p class="time">00h<br class="mobile">00</p>
 			</section>
 			<hr>
-			<section class="cities mexico">
+			<section class="cities mexico"  id="mexico">
 				<h2>Mexico</h2>
                 <p class="time">00h<br class="mobile">00</p>
 			</section>
 			<hr>
-			<section class="cities sydney">
+			<section class="cities sydney" id="sydney">
 				<h2>Sydney</h2>
                 <p class="time">00h<br class="mobile">00</p>
 			</section>
 			<hr>
-			<section class="cities tokyo">
+			<section class="cities tokyo"  id="tokyo">
 				<h2>Tokyo</h2>
                 <p class="time">00h<br class="mobile">00</p>
 			</section>
 			<hr>
-			<section class="cities leCaire">
+			<section class="cities leCaire"  id="caire">
 				<h2>Le Caire</h2>
                 <p class="time">00h<br class="mobile">00</p>
+			</section>
+			<section class="cities leCaire"  id="caire">
+				<h2>Test</h2>
+                <article id="clock">
+					<div>12</div>
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+					<div>6</div>
+					<div>7</div>
+					<div>8</div>
+					<div>9</div>
+					<div>10</div>
+					<div>11</div>
+					<div id="hour"></div>
+					<div id="minute"></div>
+					<div id="second"></div>
+					<div id="round"></div>
+			  </article>
 			</section>
 			<hr>
 			<section class="end">
@@ -90,5 +117,6 @@
 				</footer>
 			</section>
 		</main>
+	<script src="../horlogeAnalogique/index.js"></script>
 	</body>
 </html>

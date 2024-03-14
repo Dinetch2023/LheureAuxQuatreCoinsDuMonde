@@ -18,7 +18,7 @@
        */
 
       const day = document.querySelector("#day")
-      day.innerHTML = setDate('de-DE');
+      day.innerHTML = setDate('fr-FR');
 
       function init() {
             setRotation(setDegres());
