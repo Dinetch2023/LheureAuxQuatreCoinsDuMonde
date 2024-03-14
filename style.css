@@ -28,8 +28,8 @@ body {
 }
 
 section {
-    width: 80vw;
-    height: 100vh;
+    width: 80vw!important;
+
 }
 
 /* Styles header */
@@ -77,26 +77,33 @@ nav ul {
     width: 15vw;
     height: auto;
     margin: 15px;
+    max-width: 200px;
 }
 
-.boxLogo {
-    
-    flex-grow: 3;
-}
+
 
 .titleHome {
-    flex-grow: 4;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 30px;
+    margin: 3rem;
+}
+
+@media screen and (min-width:992px ) {
+    .titleHome{
+    margin-left: 10rem;
+    }
+
+  
+
 }
 
 h1 {
    color: var(--primary-color);
-    font-size: 2.5rem;
+    font-size: max(6vw, 2.25rem);
     font-family: var(--title-font);
-    padding: 30px;
+    padding: 30px 30px 30px 0;
 }
 
 .titleHome p {
@@ -104,7 +111,7 @@ h1 {
     font-family: var(--text-font);
     font-size: 1.5rem;
     border-left: 2px solid var(--primary-color);
-    padding: 2rem;
+    padding: 30px;
 }
 
 .titleHome p span {
@@ -116,7 +123,6 @@ h1 {
 
 h2 {
     font-family:  var(--text-font);
-    text-shadow: var(--fourth-color) 1px 0 48px;
     
 }
 
@@ -131,71 +137,189 @@ h2 {
     gap: 8px;
 }
 
-.time {
+.cities .time {
+    position: relative;
+    padding-bottom: 20vh;
     font-size: 8rem;
     font-family: var(--text-font);
+    text-shadow: 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color);
 }
 
-.cities h2 {
+.cities h2  {
+    position: relative;
+    padding-top: 20vh;
     font-size: 3rem;
     font-weight: 400;
+    text-shadow: 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color), 0 0 50px var(--fourth-color);
 }
 
-.cities h2, .cities p {
-    text-shadow: 0 0 20px var(--fourth-color);
-  }
 
-.Paris{
+
+.paris{
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.paris::before {    
+    content: "";
     background-image: url("images/Paris_jour.png");
-
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
 }
-.Washington{
+
+
+
+.washington{
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.washington::before {    
+    content: "";
     background-image: url("images/Washington_jour.png");
-
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
 }
-.Mexico{
+
+
+.mexico{
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.mexico::before {    
+    content: "";
     background-image: url("images/Mexico_jour.png");
-
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
 }
 
-.Sydney{
+
+
+.sydney{
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.sydney::before {    
+    content: "";
     background-image: url("images/Sydney_jour.png");
-
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
 }
 
-.Tokyo{
+
+
+
+.tokyo{
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.tokyo::before {    
+    content: "";
     background-image: url("images/Tokyo_jour.png");
-
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
 }
 
-.LeCaire{
+.leCaire{
+    position: relative; 
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.leCaire::before {    
+    content: "";
     background-image: url("images/Le_Caire_jour.png");
-  
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    opacity: 0.8;
 }
 
 /* styles cards */
 
 .end{
-    background-color: red;
-    padding: 10rem;
+    background-color: var(--secondary-color);
+    padding:3rem 3rem 3rem 3rem;
     display: grid;
+    grid-auto-rows: auto;
     grid-template-areas: 
         "a"
         "b"
         "c"
-        "d";
+        "d"
+        "e";
     gap:3rem;
     
 }
 
 @media screen and (min-width:992px ) {
     .end{
-        background-color: red;
-        padding: 6rem;
+       
         display: grid;
         grid-template-areas: 
             "a b"
-            "c d";
+            "c d"
+            "e e";
         gap: 3rem;
         
     }
@@ -203,24 +327,51 @@ h2 {
 }
 
 .end article:nth-child(1) {
-    background-color: white;
-    grid-area: 'a';
+    grid-area: a;
 
-}; 
+} 
 
 .end article:nth-child(2) {
-    background-color: white;
-    grid-area: 'b';
-}; 
 
-.end article:nth-child(3) {
-    background-color: white;
-    grid-area: 'c';
-}; 
+    grid-area: b;
+}
 
+.end article:nth-child(3){
+  
+    grid-area: c;
+}
 .end article:nth-child(4) {
-    background-color: white;
-    grid-area: 'd';
-}; 
+   
+    grid-area: d; 
+} 
 
 
+article>h3{
+    font-family:  var(--text-font);
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+article>p{
+    font-size: 4rem;
+    font-family: var(--text-font);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+footer>p {
+    font-family: var(--text-font);
+    font-size: 1.2rem;
+}
+
+
+footer {
+    border-top: 1px solid var(--primary-color);
+    padding-top: 1.5rem;
+    color: var(--primary-color);
+    grid-area: e;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
