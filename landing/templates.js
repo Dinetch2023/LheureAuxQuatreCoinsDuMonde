@@ -1,8 +1,44 @@
+const timesZones = [
+    'America/Mexico_City',
+    'Europe/Paris',
+    'Asia/Tokyo',
+    'Europe/London', 
+    'Europe/Madrid', 
+];
+
+
+// Données en entrée sur papier 
+// Données en sortie sur papier
+// idée de base : boucler --> donc focus sur elle 
+// init d'une constante donc --> on affecte la valeur, ici notre date local dans la boucle
+
+
+
+// Mecanique de récupération de l'heure par timeZone
+function dateLocal (timeZone) {
+    const date = new Date();
+    const dateLocal = new Intl.DateTimeFormat('fr-FR', {
+        timeStyle: 'short',
+        timeZone: timeZone,
+    }).format(date);
+    return dateLocal;
+
+}
+// Mecanique d'affectation de l'heure par timeZone via un array
+function setDateLocal() {
+    const datesLocales = [];
+    for (i = 0; i < timesZones.length; i++) {
+        const timeZone = timesZones[i];
+        datesLocales.push(dateLocal(timeZone));
+    }
+    return datesLocales;
+}
+
+
 const majorCities = [
     {
         name: "Paris", 
-        hours: "00",
-        minutes: "00",
+        hours: `${setDateLocal()[1]}`,
         images: {
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
@@ -12,7 +48,7 @@ const majorCities = [
     }, 
     {
         name: "Washington", 
-        hours: "01",
+        hours: `${setDateLocal()[0]}`,
         minutes: "00",
         images: {
             day: "../assets/Washington_jour.png", 
