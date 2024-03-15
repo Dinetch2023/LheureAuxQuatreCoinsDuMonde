@@ -1,27 +1,33 @@
-# DragonFly
+# DragonFly - World Clock 🕑
+![logo](https://github.com/VncPsq/DragonFly/blob/main/assets/logo_jour.png?raw=true)
 
-Todo  : 
+Il s'agit du premier projet en groupe d'étudiants réalisé lors du BootCamp à la Wild Code School en février 2024. 
+Ce projet a été lancé 2 semaines après notre entrée en formation. 
+> [!NOTE]
+> A ce stade de la formation, nous apprenons à combiner les utilisations d'HTML, de CSS et de Javascript.
+## Le Pitch
+En JavaScript : Créer une horloge qui affiche l'heure dans différentes villes du monde. 
+Utiliser Date en JavaScript pour gérer l'heure actuelle et appliquer des calculs pour les différents fuseaux horaires. 
+Permettre à l'utilisateur de sélectionner des villes à afficher sur l'horloge.
+## Todo au 15/03
+[x] Exercice des wireframes
+  - Sur feuille de papier : sketch chacun de son côté puis mise en commun
+  - Sur Figma, mise en commun des sketch et création d'un wireframe mobile puis desktop
 
-- [x] Etape 1 : deadline (vendredi aprem ?)
-desktop Wireframe
-mobile wireframe (bonus si Kelly est chaud ou autre)
+[x] Exercice des maquettes
+  - Sur Figma, mise en forme de la maquette mobile puis desktop
+  - Sur coloors, recherche de la palette de couleurs
 
-- [x] Etape 2 : maquettes
-Selectionner des villes du monde (5 à 6 ?)
-bonus : la meme photo jour/nuit 
-Trouver des images de villes 
-maquetter le desktop
-maquetter le mobile
+[x] Recherche des assets
+  - Sélection des villes pour démarrer le projet
+  - Sélections des images jour/nuit
 
-(Etapes en parrallèle + comparer les codes)
+[ ] Codage
+  - Valider le corps HTML
+  - Valider le corps CSS
+  - Valider les mécaniques JS
 
-- [x] Etape 3 : Git/GitHub --> voir avec Fab si tout est ok ? 
-
-- [ ] Etape 4 : HTML /CSS 
-responsive : mobile first puis desktop avec les medias
-
-- [ ] Etape 5 : JS
-
-- [ ] Etape 6 : Features bonus
-
+[ ] Review
+  - 3WC
+  - Relecture et clean du code
 
