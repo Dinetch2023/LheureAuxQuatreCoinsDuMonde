@@ -11,6 +11,7 @@
     --fourth-color: #eaeaea;
     --title-font: "Playfair Display", serif;
     --text-font: "Fira Sans", serif;
+    --img-city: "url(https://placehold.co/600x400)"
 }
 
 /* Styles globaux */
@@ -187,10 +188,8 @@ h2 {
 }
 
 
-
-#paris::before {    
+.generic::before {
     content: "";
-    background-image: url("../assets/Paris_jour.png");
     background-size: cover;
     background-position: center;
     position: absolute;
@@ -202,74 +201,32 @@ h2 {
 }
 
 
+/* #paris::before {    
+    background-image: url("../assets/Paris_jour.png");   
+}
 
 #washington::before {    
-    content: "";
-    background-image: url("../assets/Washington_jour.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
+    background-image: url("../assets/Washington_jour.png");   
 }
 
-
 #mexico::before {    
-    content: "";
-    background-image: url("../assets/Mexico_jour.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
+    background-image: url("../assets/Mexico_jour.png");   
 }
 
 #sydney::before {    
-    content: "";
-    background-image: url("../assets/Sydney_jour.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
+    background-image: url("../assets/Sydney_jour.png");   
 }
-
 
 #tokyo::before {    
-    content: "";
-    background-image: url("../assets/Tokyo_jour.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
+    background-image: url("../assets/Tokyo_jour.png");   
 }
 
-
 #leCaire::before {    
-    content: "";
-    background-image: url("../assets/Le_Caire_jour.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
+    background-image: url("../assets/Le_Caire_jour.png");   
+} */
 
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
+::before {
+    background-image: var(--img-city);
 }
 
 #cityTest::before {    
@@ -278,7 +235,6 @@ h2 {
     background-size: cover;
     background-position: center;
     position: absolute;
-
     top: 0px;
     right: 0px;
     bottom: 0px;

@@ -12,7 +12,7 @@ const majorCities = [
     }, 
     {
         name: "Washington", 
-        hours: "00",
+        hours: "01",
         minutes: "00",
         images: {
             day: "../assets/Washington_jour.png", 
@@ -23,7 +23,7 @@ const majorCities = [
     }, 
     {
         name: "Mexico", 
-        hours: "00",
+        hours: "02",
         minutes: "00",
         images: {
             day: "../assets/Mexico_jour.png", 
@@ -34,7 +34,7 @@ const majorCities = [
     }, 
     {
         name: "Sydney", 
-        hours: "00",
+        hours: "03",
         minutes: "00",
         images: {
             day: "../assets/Sydney_jour.png", 
@@ -45,7 +45,7 @@ const majorCities = [
     }, 
     {
         name: "Tokyo", 
-        hours: "00",
+        hours: "04",
         minutes: "00",
         images: {
             day: "../assets/Tokyo_jour.png", 
@@ -56,7 +56,7 @@ const majorCities = [
     }, 
     {
         name: "Le Caire", 
-        hours: "00",
+        hours: "05",
         minutes: "00",
         images: {
             day: "../assets/Le_Caire_jour.png", 
@@ -71,28 +71,39 @@ const majorCities = [
 // 1) On crée la logique de creation d'un bloc
 function createBlock (city){
 
-    const newBlock = `<section class="cities"  id="${city.value}">
-    <h2>${city.name}</h2>
-    <p class="time">${city.hours}h<br class="mobile">${city.minutes}</p>
-</section>
-<hr>`;
+    const article = document.createElement("article");
+    article.classList.add("city", "generic");
+    article.setAttribute("id", city.value);
 
-    return newBlock;
+    article.style.setProperty('--img-city', `url(${city.images.day})`)
+
+
+    const h2 = document.createElement("h2")
+    h2.textContent = city.name;
+
+    article.appendChild(h2);
+
+    const p = document.createElement("p")
+    p.classList.add('time');
+    p.innerHTML = `${city.hours}h <br class="mobile" /> ${city.minutes}`
+
+    article.appendChild(p)
+
+
+    return article;
 }
 
 // 2) Resultat : on a une chaine de caractère avec tous nos blocs à la suite
 
 function loopBlock (array) {
-    let blocks = "";
+    let blocks = document.createElement("div");
 
     for (let i = 0; i < array.length; i++) {
-        blocks = blocks + createBlock(array[i]);
+        blocks.appendChild(createBlock(array[i]));
     }
 
     return blocks;
 }
 
-const blocks = document.querySelector(".blocks");
-blocks.innerHTML = loopBlock(majorCities);
-
-console.log(blocks.innerHTML)
+const cities = document.querySelector(".cities");
+cities.appendChild(loopBlock(majorCities));
