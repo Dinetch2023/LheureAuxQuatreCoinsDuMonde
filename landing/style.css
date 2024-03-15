@@ -298,6 +298,7 @@ h2 {
 .end{
     background-color: var(--secondary-color);
     padding:3rem 3rem 3rem 3rem;
+    height: 100vh;;
     display: grid;
     grid-auto-rows: auto;
     grid-template-areas: 
@@ -343,19 +344,27 @@ h2 {
     grid-area: d; 
 } 
 
-
 article>h3{
-    font-family:  var(--text-font);
-    font-size: 3rem;
+    font-family: var(--text-font);
+    font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: 20px;
-}
 
+}
 article>p{
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-family: var(--text-font);
     color: var(--third-color);
     margin-bottom: 20px;
+}
+
+@media screen and (min-width:992px){
+    article>h3{
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    article>p {
+        font-size: 4rem;
+    }
 }
 
 footer>p {
