@@ -34,11 +34,17 @@ function setDateLocal() {
     return datesLocales;
 }
 
+const local = document.querySelector("#local");
+local.innerHTML = setDateLocal()[1];
 
+
+
+// Tableau pour le templating
 const majorCities = [
     {
         name: "Paris", 
-        hours: `${setDateLocal()[1]}`,
+        hours: "00",
+        minutes: "00",
         images: {
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
@@ -48,7 +54,7 @@ const majorCities = [
     }, 
     {
         name: "Washington", 
-        hours: `${setDateLocal()[0]}`,
+        hours: "00",
         minutes: "00",
         images: {
             day: "../assets/Washington_jour.png", 
