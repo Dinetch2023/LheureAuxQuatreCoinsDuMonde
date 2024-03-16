@@ -1,3 +1,7 @@
+# Avancement
+> [!NOTE]
+> Vincent : penser à utiliser le Date.setHours pour ruser la pendule via l'heure locale récupérée depuis la timeZone
+
 # DragonFly - World Clock 🕑
 ![logo](https://github.com/VncPsq/DragonFly/blob/main/assets/logo_jour.png?raw=true)
 
