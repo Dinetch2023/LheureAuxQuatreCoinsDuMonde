@@ -1,8 +1,75 @@
-
-
 /********** RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
 const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
-//Création du tableau de timezones
+const majorCities = [
+    {
+        name: "Paris", 
+        hours: "00",
+        minutes: "00",
+        images: {
+            day: "../assets/Paris_jour.png", 
+            night: "../assets/Paris_nuit.png"
+        },
+        clock: false,
+        value: "paris",
+    }, 
+    {
+        name: "Phoenix", 
+        hours: "00",
+        minutes: "00",
+        images: {
+            day: "../assets/Washington_jour.png", 
+            night: "../assets/Washington_Nuit.png"
+        },
+        clock: false,
+        value: "phoenix",
+    }, 
+    {
+        name: "Montevideo", 
+        hours: "02",
+        minutes: "00",
+        images: {
+            day: "../assets/Mexico_jour.png", 
+            night: "../assets/Mexico_nuit.png"
+        },
+        clock: false,
+        value: "montevideo",
+    }, 
+    {
+        name: "Sydney", 
+        hours: "03",
+        minutes: "00",
+        images: {
+            day: "../assets/Sydney_jour.png", 
+            night: "../assets/Sydney_nuit.png"
+        },
+        clock: false,
+        value: "sydney",
+    }, 
+    {
+        name: "Tokyo", 
+        hours: "04",
+        minutes: "00",
+        images: {
+            day: "../assets/Tokyo_jour.png", 
+            night: "../assets/Tokyo_nuit.png"
+        },
+        clock: false,
+        value: "tokyo",
+    }, 
+    {
+        name: "Casablanca", 
+        hours: "05",
+        minutes: "00",
+        images: {
+            day: "../assets/Le_Caire_jour.png", 
+            night: "../assets/Le_Caire_nuit.png"
+        },
+        clock: false,
+        value: "casablanca",
+    }, 
+];
+
+//Création du tableau de timezones (SOURCE)
 const timesZones = [
     `${userTimeZone}`,
     'Africa/Abidjan',
@@ -599,7 +666,7 @@ const timesZones = [
     'Zulu',
     ];
 
-// Mecanique de récupération d'un tableau de TimesZones puis affectation de l'heure locale par TimeZone
+// Mecanique de récupération d'un tableau de TimesZones (SOURCE) puis affectation de l'heure locale par TimeZone
 function setDateLocal(timesZones) {
     //set array empty to populate data
     const datesLocales = [];
@@ -631,108 +698,44 @@ function setDateLocal(timesZones) {
     return datesLocales
 }
 
-// Creation d'une variable pour accéder aux données de la function
+// Creation d'un tableaux d'objets (LA BDD) pour récupérer aux données de la function
 const datesLocalesArray = setDateLocal(timesZones);
 // Modification du HTML avec innerHTML
 const local = document.querySelector("#userTimeZone");
 local.innerHTML = datesLocalesArray[0].dateLocal.dateLocal;
 
-console.log(datesLocalesArray);
 
+// DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
+// Creation d'une fonction search pour matcher la MajorCity (DONNEES) avec la BDD
+function search(nameKey,  arrayBDD){
+    for (let i=0; i < arrayBDD.length; i++) {
+        if (arrayBDD[i].timeZone.area === nameKey) {
+            return i;
+        }
+    }
+}
 
 
 /********** DONNEES POUR LE TEMPLATING ************/
 
-// Tableau pour le templating
-const majorCities = [
-    {
-        name: "Paris", 
-        hours: `${datesLocalesArray[0].dateLocal.hours}`,
-        minutes: `${datesLocalesArray[0].dateLocal.minutes}`,
-        images: {
-            day: "../assets/Paris_jour.png", 
-            night: "../assets/Paris_nuit.png"
-        },
-        clock: false,
-        value: "paris",
-    }, 
-    {
-        name: "Washington", 
-        hours: "00",
-        minutes: "00",
-        images: {
-            day: "../assets/Washington_jour.png", 
-            night: "../assets/Washington_Nuit.png"
-        },
-        clock: false,
-        value: "washington",
-    }, 
-    {
-        name: "Mexico", 
-        hours: "02",
-        minutes: "00",
-        images: {
-            day: "../assets/Mexico_jour.png", 
-            night: "../assets/Mexico_nuit.png"
-        },
-        clock: false,
-        value: "mexico",
-    }, 
-    {
-        name: "Sydney", 
-        hours: "03",
-        minutes: "00",
-        images: {
-            day: "../assets/Sydney_jour.png", 
-            night: "../assets/Sydney_nuit.png"
-        },
-        clock: false,
-        value: "sydney",
-    }, 
-    {
-        name: "Tokyo", 
-        hours: "04",
-        minutes: "00",
-        images: {
-            day: "../assets/Tokyo_jour.png", 
-            night: "../assets/Tokyo_nuit.png"
-        },
-        clock: false,
-        value: "tokyo",
-    }, 
-    {
-        name: "Le Caire", 
-        hours: "05",
-        minutes: "00",
-        images: {
-            day: "../assets/Le_Caire_jour.png", 
-            night: "../assets/Le_Caire_nuit.png"
-        },
-        clock: false,
-        value: "leCaire",
-    }, 
-];
-
-
-console.log(datesLocalesArray[0].timeZone.area)
-console.log(majorCities[0].name)
-
-if (datesLocalesArray[0].timeZone.area == majorCities[0].name) {
-    majorCities[0].hours = datesLocalesArray[0].dateLocal.hours;
+// DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
+// STEP 1 - trouver l'index de la MajorCity (DONNEE) dans le tableau de BDD
+function addIndexMajorCity(arrayToCheck, arrayBDD) {
+    for (let i = 0; i < arrayToCheck.length; i++) {
+        arrayToCheck[i].indexBDD = search(arrayToCheck[i].name, arrayBDD); 
+        arrayToCheck[i].hours = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.hours;
+        arrayToCheck[i].minutes = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.minutes;
+    }
 }
+addIndexMajorCity(majorCities, datesLocalesArray);
 
-console.log(majorCities[0].hours)
+// arrayToCheck[i].hours = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.hours
 
-// function findArea (area) {
-
-//         for (majorCity in majorCities) {
-//             if (majorCity.name == datesLocalesArray[0].timeZone.area) {
-//                 console.log("Blob");
-//             } 
-//         }
-    
+// STEP 2 - Récupérer la donnée d'heure et de minute de la BDD grâce à mon index de DONNEE
+console.log(majorCities)
 
 
+//city.import.dateLocal.dateLocal
 /********** CREATION DE LA LOGIQUE DE TEMPLATING ************/
 
 // 1) On crée la logique de creation d'un bloc
@@ -742,7 +745,11 @@ function createBlock (city){
     article.classList.add("city", "generic");
     article.setAttribute("id", city.value);
 
-    article.style.setProperty('--img-city', `url(${city.images.day})`)
+    if (city.hour >= 6 && city.hour <= 20  ) {
+        article.style.setProperty('--img-city', `url(${city.images.day})`)
+    } else {
+        article.style.setProperty('--img-city', `url(${city.images.night})`)
+    }
 
 
     const h2 = document.createElement("h2")
