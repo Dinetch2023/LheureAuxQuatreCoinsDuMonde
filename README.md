@@ -1,6 +1,12 @@
 # Avancement
 > [!NOTE]
-> Vincent : penser à utiliser le Date.setHours pour ruser la pendule via l'heure locale récupérée depuis la timeZone
+> Vincent : Penser à utiliser le Date.setHours pour ruser la pendule via l'heure locale récupérée depuis la timeZone
+> Vincent : Veille sur le scroll
+> [!ALERT]
+> Vincent : Vérifier pourquoi le setInterval ne fonctionne pas sur les major
+> Vincent : Continuer le travail sur les villes mineures
+> Vincent : ATTENTION a 2 données en dur dans 2 fonctions --> pb du undefined qui crash la fonction (search)
+
 
 # DragonFly - World Clock 🕑
 ![logo](https://github.com/VncPsq/DragonFly/blob/main/assets/logo_jour.png?raw=true)
