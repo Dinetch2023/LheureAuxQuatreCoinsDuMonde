@@ -1,69 +1,62 @@
+/****************** GUIDE CONSTRUIRE LOGIQUE FONCTION **************/
+// Données en entrée sur papier : Que cherche t'on a manipuler ? 
+// Données en sortie sur papier : Que cherche t'on a obtenir ? 
+// idée de base : boucler --> donc focus sur elle. Que cherche t'on a faire ? 
+// init d'une constante donc --> on affecte la valeur, ici notre date local dans la boucle. Comment l'executer ? 
+const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 
-      //Initialisation de la date locale
-      function setDate(localZone) {
-            const date = new Date();
-            const options = {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-            };
-            return date.toLocaleDateString(localZone, options);
-      };
-      
-      /**
-       * 1/ récuperer le dom
-       * 2/ modifier le dom avec setDate("fr-FR");
-       * 2/ modifier le dom avec setDate("de-DE");
-       */
 
-      // const day = document.querySelector("#day")
-      // day.innerHTML = setDate('fr-FR');
+/********** RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
 
-      function init() {
-            setRotation(setDegres());
-      }
-      
-      //Initialisation des aiguilles
-      function setDegres () {
-            const date = new Date();
+//Création du tableau de timezones
+const timesZones = [
+    `${userTimeZone}`,
+    'America/Mexico_City',
+    'Asia/Tokyo',
+    'Europe/London', 
+    'Europe/Madrid', 
+    'Africa/Abidjan',
+    'Africa/Accra',
+    'Africa/Addis_Ababa',
+    'Africa/Algiers',
+    'Africa/Asmara',
+    'Africa/Asmera',
+    'Africa/Bamako',
+    'Africa/Bangui',
+    'Africa/Banjul',
+    'Africa/Bissau',
+    'Africa/Blantyre',
+    'Africa/Brazzaville',
+];
 
-            const seconds = date.getSeconds();
-            const minutes = date.getMinutes();
-            const hours = date.getHours();
+// Mecanique de récupération d'un tableau de TimesZones puis affectation de l'heure locale par TimeZone
+function setDateLocal(timesZones) {
+    const datesLocales = [];
+    for (i = 0; i < timesZones.length; i++) {
+        const timeZone = timesZones[i];
+        //Initialisation de la date puis ajout d'options pour la formater
+        const date = new Date ();
+        const dateLocal = new Intl.DateTimeFormat('fr-FR', {
+            timeStyle: 'short',
+            timeZone: timeZone,
+        }).format(date).replace(":", "h");
+        datesLocales.push(dateLocal);
+    }
+    // Resultat : un tableau des heures locales par timeZone
+    return datesLocales
+}
 
-            const secondsRatio = (seconds / 60);
-            const minutesRatio = ((secondsRatio + minutes) / 60);
-            const hoursRatio = ((minutesRatio + hours) / 12);
 
-            const secondsDegres = (secondsRatio * 360);
-            const minutesDegres = (minutesRatio * 360);
-            const hourDegres = (hoursRatio * 360);
+    console.log(setDateLocal(timesZones));
 
-            return results = [hourDegres, minutesDegres, secondsDegres];
-      };
+    
 
-      
-      //Initialisation de la rotation
-      function setRotation (degres) {
-            const hourHand = document.querySelector('#hour');
-            const minuteHand = document.querySelector('#minute');
-            const secondHand = document.querySelector('#second');
 
-            hourHand.style.transform = `rotate(${degres[0]}deg)`;
-            minuteHand.style.transform = `rotate(${degres[1]}deg)`;
-            secondHand.style.transform = `rotate(${degres[2]}deg)`;
-      };
 
-      //callback de setRotation
-     init()
-     
-     /**
-      * Nous devons relancer chaque second la fonction setRotation et setDegres
-     */
-    setInterval(() => {
-           init()
-     }, 1000);
+// Modification du HTML avec innerHTML
+const local = document.querySelector("#userTimeZone");
+local.innerHTML = setDateLocal(timesZones)[0];
+
 
 // const timesZones = [
 //       'Africa/Abidjan',
@@ -659,18 +652,3 @@
 //       'WET',
 //       'Zulu',
 //       ];
-
-      
-
-
-
-     
-
-     
-
-      
-    
-
-      
-     
-
