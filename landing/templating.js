@@ -1,74 +1,74 @@
 /********** RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
 const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
+//Création des données (DONNEES)
 const majorCities = [
     {
-        name: "Paris", 
-        hours: "00",
-        minutes: "00",
+        name: "Paris",
         images: {
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
         },
         clock: false,
-        value: "paris",
     }, 
     {
         name: "Phoenix", 
-        hours: "00",
-        minutes: "00",
         images: {
             day: "../assets/Washington_jour.png", 
             night: "../assets/Washington_Nuit.png"
         },
         clock: false,
-        value: "phoenix",
     }, 
     {
         name: "Montevideo", 
-        hours: "02",
-        minutes: "00",
         images: {
             day: "../assets/Mexico_jour.png", 
             night: "../assets/Mexico_nuit.png"
         },
         clock: false,
-        value: "montevideo",
     }, 
     {
         name: "Sydney", 
-        hours: "03",
-        minutes: "00",
         images: {
             day: "../assets/Sydney_jour.png", 
             night: "../assets/Sydney_nuit.png"
         },
         clock: false,
-        value: "sydney",
     }, 
     {
         name: "Tokyo", 
-        hours: "04",
-        minutes: "00",
         images: {
             day: "../assets/Tokyo_jour.png", 
             night: "../assets/Tokyo_nuit.png"
         },
         clock: false,
-        value: "tokyo",
     }, 
     {
         name: "Casablanca", 
-        hours: "05",
-        minutes: "00",
         images: {
             day: "../assets/Le_Caire_jour.png", 
             night: "../assets/Le_Caire_nuit.png"
         },
         clock: false,
-        value: "casablanca",
     }, 
 ];
-
+const minorCities = [
+    {
+        name: "Baku", 
+        clock: false,
+    }, 
+    {
+        name: "Cancun", 
+        clock: false,
+    }, 
+    {
+        name: "Ushuaia", 
+        clock: false,
+    }, 
+    {
+        name: "Abidjan",
+        clock: false,
+    }, 
+];
 //Création du tableau de timezones (SOURCE)
 const timesZones = [
     `${userTimeZone}`,
@@ -666,7 +666,7 @@ const timesZones = [
     'Zulu',
     ];
 
-// Mecanique de récupération d'un tableau de TimesZones (SOURCE) puis affectation de l'heure locale par TimeZone
+// Manipulation de la source pour y appliquer des valeurs de l'heure locale par TimeZone (SOURCE --> MAJ SOURCE)
 function setDateLocal(timesZones) {
     //set array empty to populate data
     const datesLocales = [];
@@ -676,7 +676,7 @@ function setDateLocal(timesZones) {
         //Initialisation de la date puis ajout d'options pour la formater
         const date = new Date ();
         const dateLocal = new Intl.DateTimeFormat('fr-FR', {
-            timeStyle: 'short',
+            timeStyle: 'long',
             timeZone: timeZone,
         }).format(date).replace(":", "h");
 
@@ -689,7 +689,9 @@ function setDateLocal(timesZones) {
             }, 
             dateLocal: {
                 hours: dateLocal.split("h")[0],
-                minutes: dateLocal.split("h")[1],
+                minutes: dateLocal.split("h")[1].split(":")[0],
+                secondes: dateLocal.split(":")[1].split(" ")[0],
+                utc: dateLocal.split(":")[1].split(" ")[1],
                 dateLocal
             },
         });
@@ -697,17 +699,12 @@ function setDateLocal(timesZones) {
     // Resultat : un tableau des heures locales par timeZone
     return datesLocales
 }
-
-// Creation d'un tableaux d'objets (LA BDD) pour récupérer aux données de la function
-const datesLocalesArray = setDateLocal(timesZones);
-// Modification du HTML avec innerHTML
-const local = document.querySelector("#userTimeZone");
-local.innerHTML = datesLocalesArray[0].dateLocal.dateLocal;
-
+// Creation d'un tableaux d'objets (LA BDD) pour récupérer les données de la function (SOURCE --> BDD)
+const formatedTimesZonesArray = setDateLocal(timesZones);
 
 // DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
-// Creation d'une fonction search pour matcher la MajorCity (DONNEES) avec la BDD
-function search(nameKey,  arrayBDD){
+// Creation d'une fonction search pour matcher la MajorCity (DONNEES) avec la BDD (DONNEES in BDD ?)
+function search(nameKey, arrayBDD){
     for (let i=0; i < arrayBDD.length; i++) {
         if (arrayBDD[i].timeZone.area === nameKey) {
             return i;
@@ -715,28 +712,31 @@ function search(nameKey,  arrayBDD){
     }
 }
 
-
 /********** DONNEES POUR LE TEMPLATING ************/
 
 // DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
-// STEP 1 - trouver l'index de la MajorCity (DONNEE) dans le tableau de BDD
-function addIndexMajorCity(arrayToCheck, arrayBDD) {
+// STEP 1 - trouver l'index de la MajorCity (DONNEE) dans le tableau de BDD (INDEX DONNEES IN BDD ?)
+function updateDataArray(arrayToCheck, arrayBDD) {
     for (let i = 0; i < arrayToCheck.length; i++) {
         arrayToCheck[i].indexBDD = search(arrayToCheck[i].name, arrayBDD); 
         arrayToCheck[i].hours = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.hours;
         arrayToCheck[i].minutes = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.minutes;
+        arrayToCheck[i].secondes = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.secondes;
+        arrayToCheck[i].utc = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.utc;
+        arrayToCheck[i].name = arrayBDD[arrayToCheck[i].indexBDD].timeZone.area;
+        arrayToCheck[i].value = arrayBDD[arrayToCheck[i].indexBDD].timeZone.area.toLowerCase();
+        
     }
 }
-addIndexMajorCity(majorCities, datesLocalesArray);
+updateDataArray(majorCities, formatedTimesZonesArray);
+updateDataArray(minorCities, formatedTimesZonesArray);
 
-// arrayToCheck[i].hours = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.hours
-
-// STEP 2 - Récupérer la donnée d'heure et de minute de la BDD grâce à mon index de DONNEE
-console.log(majorCities)
-
-
-//city.import.dateLocal.dateLocal
+// STEP 2 - Récupérer la donnée d'heure et de minute de la BDD grâce à mon index de DONNEE  (DONNEE UPDATED --> INJECTION HTML)
 /********** CREATION DE LA LOGIQUE DE TEMPLATING ************/
+
+// Ajout de l'heure local du user dans le HTML
+const local = document.querySelector("#userTimeZone");
+local.innerHTML = formatedTimesZonesArray[0].dateLocal.dateLocal.split(":")[0];
 
 // 1) On crée la logique de creation d'un bloc
 function createBlock (city){
@@ -745,7 +745,7 @@ function createBlock (city){
     article.classList.add("city", "generic");
     article.setAttribute("id", city.value);
 
-    if (city.hour >= 6 && city.hour <= 20  ) {
+    if ( city.hours >= 6 && city.hours < 19 ) {
         article.style.setProperty('--img-city', `url(${city.images.day})`)
     } else {
         article.style.setProperty('--img-city', `url(${city.images.night})`)
@@ -768,7 +768,6 @@ function createBlock (city){
 }
 
 // 2) Resultat : on a une chaine de caractère avec tous nos blocs à la suite
-
 function loopBlock (array) {
     let blocks = document.createElement("div");
 
@@ -781,3 +780,14 @@ function loopBlock (array) {
 
 const cities = document.querySelector(".cities");
 cities.appendChild(loopBlock(majorCities));
+
+
+
+//TRAVAIL A FAIRE SUR LES VILLES MINEURS
+const end = document.querySelector(".end");
+const potato = document.createElement("p")
+potato.innerHTML = "coucou"
+end.appendChild(potato);
+
+
+

@@ -22,6 +22,10 @@
     font-family: var(--text-font);
 }
 
+*::selection{
+    background-color: var(--fourth-color);
+}
+
 body {
     background-color: var(--secondary-color);
     display: flex;
@@ -191,6 +195,7 @@ h2 {
 .generic::before {
     content: "";
     background-size: cover;
+    background-image: var(--img-city);
     background-position: center;
     position: absolute;
     top: 0px;
@@ -200,34 +205,6 @@ h2 {
     opacity: 0.8;
 }
 
-
-/* #paris::before {    
-    background-image: url("../assets/Paris_jour.png");   
-}
-
-#washington::before {    
-    background-image: url("../assets/Washington_jour.png");   
-}
-
-#mexico::before {    
-    background-image: url("../assets/Mexico_jour.png");   
-}
-
-#sydney::before {    
-    background-image: url("../assets/Sydney_jour.png");   
-}
-
-#tokyo::before {    
-    background-image: url("../assets/Tokyo_jour.png");   
-}
-
-#leCaire::before {    
-    background-image: url("../assets/Le_Caire_jour.png");   
-} */
-
-::before {
-    background-image: var(--img-city);
-}
 
 #cityTest::before {    
     content: "";
