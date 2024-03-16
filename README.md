@@ -35,3 +35,8 @@ Permettre à l'utilisateur de sélectionner des villes à afficher sur l'horloge
   - 3WC
   - Relecture et clean du code
 
+/****************** GUIDE CONSTRUIRE LOGIQUE FONCTION **************/
+// Données en entrée sur papier : Que cherche t'on a manipuler ? 
+// Données en sortie sur papier : Que cherche t'on a obtenir ? 
+// idée de base : boucler --> donc focus sur elle. Que cherche t'on a faire ? 
+// init d'une constante donc --> on affecte la valeur, ici notre date local dans la boucle. Comment l'executer ? 
