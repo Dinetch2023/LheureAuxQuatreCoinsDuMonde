@@ -707,6 +707,20 @@ function setDateLocal(timesZones) {
             timeZone: timeZone,
         }).format(date).replace(":", "h");
 
+        //Calcul des degrés de rotation pour chaque timezone
+        const seconds = Number(dateLocal.split(":")[1].split(" ")[0]);
+        const minutes = Number(dateLocal.split("h")[1].split(":")[0]);
+        const hours = Number(dateLocal.split("h")[0]);
+
+        const secondsRatio = (seconds / 60);
+        const minutesRatio = ((secondsRatio + minutes) / 60);
+        const hoursRatio = ((minutesRatio + hours) / 12);
+
+        const secondsDegres = (secondsRatio * 360);
+        const minutesDegres = (minutesRatio * 360);
+        const hourDegres = (hoursRatio * 360);
+
+
         // Populate le tableau d'objets
         datesLocales.push({
             timeZone: {
@@ -721,11 +735,17 @@ function setDateLocal(timesZones) {
                 utc: dateLocal.split(":")[1].split(" ")[1],
                 dateLocal
             },
+            degres: {
+                hours: hourDegres,
+                minutes: minutesDegres,
+                seconds: secondsDegres,
+            }, 
         });
     }
     // Resultat : un tableau des heures locales par timeZone
     return datesLocales
 }
+
 // Creation d'un tableaux d'objets (LA BDD) pour récupérer les données de la function (SOURCE --> BDD)
 const formatedTimesZonesArray = setDateLocal(timesZones);
 
@@ -752,6 +772,9 @@ function updateDataArray(arrayToCheck, arrayBDD) {
         arrayToCheck[i].utc = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.utc;
         arrayToCheck[i].name = arrayBDD[arrayToCheck[i].indexBDD].timeZone.area;
         arrayToCheck[i].value = arrayBDD[arrayToCheck[i].indexBDD].timeZone.area.toLowerCase();
+        arrayToCheck[i].hoursDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.hours;
+        arrayToCheck[i].minutesDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.minutes;
+        arrayToCheck[i].secondsDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.seconds;
         
     }
 }
@@ -869,3 +892,4 @@ minor.appendChild(loopBlock(minorCities));
 
 
 
+console.log(minorCities)
