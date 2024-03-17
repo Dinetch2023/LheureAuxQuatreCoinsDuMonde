@@ -12,6 +12,10 @@
       function setDegres () {
             const date = new Date();
 
+            // RECUPERER HEURES ET MINUTES DE NOTRE TABLEAU DE MAJEURS !!! PENSER A BIEN RECUPERER UN NUMBER
+            // date.setHours(20)
+            // date.setMinutes(20)
+
             const seconds = date.getSeconds();
             const minutes = date.getMinutes();
             const hours = date.getHours();
@@ -30,9 +34,9 @@
       
       // Mecanique d'initialisation de la rotation en fonction du tems converti en degrés
       function setRotation (degres) {
-            const hourHand = document.querySelector('#hour');
-            const minuteHand = document.querySelector('#minute');
-            const secondHand = document.querySelector('#second');
+            const hourHand = document.querySelector('.hour');
+            const minuteHand = document.querySelector('.minute');
+            const secondHand = document.querySelector('.second');
 
             hourHand.style.transform = `rotate(${degres[0]}deg)`;
             minuteHand.style.transform = `rotate(${degres[1]}deg)`;
@@ -40,8 +44,6 @@
       };
 
       //callback de setRotation via setDegres
-      init()
-     
       // Nous devons relancer chaque second la fonction setRotation et setDegres
       setInterval(() => {
            init()

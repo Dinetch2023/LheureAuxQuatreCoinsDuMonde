@@ -1,4 +1,4 @@
-/********** RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
+/********** PAETIE 1 RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
 const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 //Création des données (DONNEES)
 const majorCities = [
@@ -8,7 +8,8 @@ const majorCities = [
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
         },
-        clock: false,
+        clock: true,
+        status: "major"
     }, 
     {
         name: "Phoenix", 
@@ -17,6 +18,7 @@ const majorCities = [
             night: "../assets/Washington_Nuit.png"
         },
         clock: false,
+        status: "major"
     }, 
     {
         name: "Montevideo", 
@@ -25,6 +27,7 @@ const majorCities = [
             night: "../assets/Mexico_nuit.png"
         },
         clock: false,
+        status: "major"
     }, 
     {
         name: "Sydney", 
@@ -33,6 +36,7 @@ const majorCities = [
             night: "../assets/Sydney_nuit.png"
         },
         clock: false,
+        status: "major"
     }, 
     {
         name: "Tokyo", 
@@ -41,6 +45,7 @@ const majorCities = [
             night: "../assets/Tokyo_nuit.png"
         },
         clock: false,
+        status: "major"
     }, 
     {
         name: "Casablanca", 
@@ -49,25 +54,47 @@ const majorCities = [
             night: "../assets/Le_Caire_nuit.png"
         },
         clock: false,
+        status: "major"
     }, 
 ];
 const minorCities = [
     {
         name: "Baku", 
+        images: {
+            day: "../assets/Paris_jour.png", 
+            night: "../assets/Paris_nuit.png"
+        },
         clock: false,
+        status: "minor"
     }, 
     {
         name: "Cancun", 
+        images: {
+            day: "../assets/Paris_jour.png", 
+            night: "../assets/Paris_nuit.png"
+        },
         clock: false,
+        status: "minor"
     }, 
     {
         name: "Ushuaia", 
+        images: {
+            day: "../assets/Paris_jour.png", 
+            night: "../assets/Paris_nuit.png"
+        },
         clock: false,
+        status: "minor"
     }, 
     {
         name: "Abidjan",
+        images: {
+            day: "../assets/Paris_jour.png", 
+            night: "../assets/Paris_nuit.png"
+        },
         clock: false,
+        status: "minor"
     }, 
+   
 ];
 //Création du tableau de timezones (SOURCE)
 const timesZones = [
@@ -712,7 +739,7 @@ function search(nameKey, arrayBDD){
     }
 }
 
-/********** DONNEES POUR LE TEMPLATING ************/
+/********** PARTIE 2: FORMATAGE DES DONNEES POUR LE TEMPLATING ************/
 
 // DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
 // STEP 1 - trouver l'index de la MajorCity (DONNEE) dans le tableau de BDD (INDEX DONNEES IN BDD ?)
@@ -728,11 +755,13 @@ function updateDataArray(arrayToCheck, arrayBDD) {
         
     }
 }
+
 updateDataArray(majorCities, formatedTimesZonesArray);
-updateDataArray(minorCities, formatedTimesZonesArray);
+updateDataArray(minorCities, formatedTimesZonesArray); 
+
 
 // STEP 2 - Récupérer la donnée d'heure et de minute de la BDD grâce à mon index de DONNEE  (DONNEE UPDATED --> INJECTION HTML)
-/********** CREATION DE LA LOGIQUE DE TEMPLATING ************/
+/********** PARTIE 3 - CREATION DE LA LOGIQUE DE TEMPLATING ************/
 
 // Ajout de l'heure local du user dans le HTML
 const local = document.querySelector("#userTimeZone");
@@ -741,53 +770,102 @@ local.innerHTML = formatedTimesZonesArray[0].dateLocal.dateLocal.split(":")[0];
 // 1) On crée la logique de creation d'un bloc
 function createBlock (city){
 
-    const article = document.createElement("article");
-    article.classList.add("city");
-    article.setAttribute("id", city.value);
+    if (city.status === "major") {
 
-    if ( city.hours >= 6 && city.hours < 19 ) {
-        article.style.setProperty('--img-city', `url(${city.images.day})`)
-    } else {
-        article.style.setProperty('--img-city', `url(${city.images.night})`)
+        const article = document.createElement("article");
+        article.classList.add("city");
+        article.setAttribute("id", city.value);
+
+        if ( city.hours >= 6 && city.hours < 19 ) {
+            article.style.setProperty('--img-city', `url(${city.images.day})`)
+        } else {
+            article.style.setProperty('--img-city', `url(${city.images.night})`)
+        }
+
+
+        const h2 = document.createElement("h2")
+        h2.textContent = city.name;
+
+        article.appendChild(h2);
+
+        if (city.clock === false) {
+        const p = document.createElement("p")
+        p.classList.add('time');
+        p.innerHTML = `${city.hours}h${city.minutes}`
+
+        article.appendChild(p)
+        } else {
+            const div = document.createElement("div")
+            div.classList.add('clock');
+            div.innerHTML = `
+            <div>12</div>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+            <div>10</div>
+            <div>11</div>
+            <div class="hour"></div>
+            <div class="minute"></div>
+            <div class="second"></div>
+            <div class="round"></div>
+        `
+            article.appendChild(div)
+        }
+        return article;
+
+    } else if (city.status === "minor") {
+
+        const article = document.createElement("article");
+        article.setAttribute("id", city.value);
+
+        const img = document.createElement("img")
+        img.classList.add("imgMinor");
+
+        if ( city.hours >= 6 && city.hours < 19 ) {
+        img.src = city.images.day;
+        } else {
+            img.src = city.images.night;
+        }
+
+        article.appendChild(img);
+
+        const h3 = document.createElement("h3")
+        h3.textContent = city.name;
+
+        article.appendChild(h3);
+
+        const p = document.createElement("p")
+        p.innerHTML = `${city.hours}h${city.minutes}`
+        article.appendChild(p)
+
+        return article;
+
     }
 
-
-    const h2 = document.createElement("h2")
-    h2.textContent = city.name;
-
-    article.appendChild(h2);
-
-    const p = document.createElement("p")
-    p.classList.add('time');
-    p.innerHTML = `${city.hours}h${city.minutes}`
-
-    article.appendChild(p)
-
-
-    return article;
 }
 
 // 2) Resultat : on a une chaine de caractère avec tous nos blocs à la suite
 function loopBlock (array) {
+    
     let blocks = document.createElement("div");
-
     for (let i = 0; i < array.length; i++) {
         blocks.appendChild(createBlock(array[i]));
     }
-
     return blocks;
 }
 
 const cities = document.querySelector(".cities");
 cities.appendChild(loopBlock(majorCities));
 
+const minor = document.querySelector(".minor");
+minor.appendChild(loopBlock(minorCities));
 
-
-//TRAVAIL A FAIRE SUR LES VILLES MINEURS
-const end = document.querySelector(".end");
-const potato = document.createElement("p")
-potato.innerHTML = "coucou"
-end.appendChild(potato);
 
 
 

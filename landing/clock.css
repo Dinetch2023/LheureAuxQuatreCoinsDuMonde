@@ -1,6 +1,6 @@
 
 /* Penser à ajouter une taille min et max en root mais same pour les 2 */
-#clock {
+.clock {
       position: relative;
       width: 15rem;
       height: 15rem;
@@ -11,7 +11,7 @@
      
 }
 
-#round {
+.round {
       position: absolute;
       border-radius: 100%;
       top: 47%;
@@ -21,7 +21,7 @@
       height: 0.8rem;
 }
 
-#minute {
+.minute {
       position: absolute;
       top: 16%;
       left: 48.7%;
@@ -34,7 +34,7 @@
       border-radius: 4px;
 }
 
-#hour {
+.hour {
       position: absolute;
       top: 27.8%;
       left: 49%;
@@ -47,7 +47,7 @@
       border-radius: 4px;
 }
 
-#second {
+.second {
       position: absolute;
       top: 10%;
       left: 49%;
@@ -60,9 +60,7 @@
       border-radius: 4px;
 }
 
-
-
-#clock div:nth-of-type(1) {
+.clock div:nth-of-type(1) {
       /* Place les les unes sur les autres sur le meme axe et left les positionne */
       position: absolute;
       left: 45%;
@@ -71,7 +69,7 @@
       transform: rotate(0deg);
 }
 
-#clock div:nth-of-type(2) {
+.clock div:nth-of-type(2) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -79,7 +77,7 @@
       transform: rotate(30deg);
 }
 
-#clock div:nth-of-type(3) {
+.clock div:nth-of-type(3) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -87,7 +85,7 @@
       transform: rotate(60deg);
 }
 
-#clock div:nth-of-type(4) {
+.clock div:nth-of-type(4) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -95,7 +93,7 @@
       transform: rotate(90deg);
 }
 
-#clock div:nth-of-type(5) {
+.clock div:nth-of-type(5) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -103,7 +101,7 @@
       transform: rotate(120deg);
 }
 
-#clock div:nth-of-type(6) {
+.clock div:nth-of-type(6) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -111,7 +109,7 @@
       transform: rotate(150deg);
 }
 
-#clock div:nth-of-type(7) {
+.clock div:nth-of-type(7) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -119,7 +117,7 @@
       transform: rotate(180deg);
 }
 
-#clock div:nth-of-type(8) {
+.clock div:nth-of-type(8) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -127,7 +125,7 @@
       transform: rotate(210deg);
 }
 
-#clock div:nth-of-type(9) {
+.clock div:nth-of-type(9) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -135,7 +133,7 @@
       transform: rotate(240deg);
 }
 
-#clock div:nth-of-type(10) {
+.clock div:nth-of-type(10) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -143,7 +141,7 @@
       transform: rotate(270deg);
 }
 
-#clock div:nth-of-type(11) {
+.clock div:nth-of-type(11) {
       position: absolute;
       left: 45%;
       height: 100%;
@@ -151,7 +149,7 @@
       transform: rotate(300deg);
 }
 
-#clock div:nth-of-type(12) {
+.clock div:nth-of-type(12) {
       position: absolute;
       left: 45%;
       height: 100%;
