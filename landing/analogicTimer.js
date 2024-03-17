@@ -26,7 +26,7 @@
 
             const secondsDegres = (secondsRatio * 360);
             const minutesDegres = (minutesRatio * 360);
-            const hourDegres = (hoursRatio * 360);
+            const hourDegres = (hoursRatio * 360) - 360;
 
             return results = [hourDegres, minutesDegres, secondsDegres];
       };

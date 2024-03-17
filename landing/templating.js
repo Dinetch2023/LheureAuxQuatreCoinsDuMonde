@@ -718,7 +718,7 @@ function setDateLocal(timesZones) {
 
         const secondsDegres = (secondsRatio * 360);
         const minutesDegres = (minutesRatio * 360);
-        const hourDegres = (hoursRatio * 360);
+        const hourDegres = (hoursRatio * 360) - 360;
 
 
         // Populate le tableau d'objets
@@ -892,4 +892,4 @@ minor.appendChild(loopBlock(minorCities));
 
 
 
-console.log(minorCities)
+console.log(majorCities)
