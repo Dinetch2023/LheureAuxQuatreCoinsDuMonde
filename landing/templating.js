@@ -742,7 +742,7 @@ local.innerHTML = formatedTimesZonesArray[0].dateLocal.dateLocal.split(":")[0];
 function createBlock (city){
 
     const article = document.createElement("article");
-    article.classList.add("city", "generic");
+    article.classList.add("city");
     article.setAttribute("id", city.value);
 
     if ( city.hours >= 6 && city.hours < 19 ) {
