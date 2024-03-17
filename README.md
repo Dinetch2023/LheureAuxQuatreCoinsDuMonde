@@ -2,12 +2,12 @@
 > [!NOTE]
 > Vincent : Penser à utiliser le Date.setHours pour ruser la pendule via l'heure locale récupérée depuis la timeZone
 >
-> Vincent : Veille sur le scroll
+> Vincent : Présenter le scroll à l'équipe
 
 > [!IMPORTANT]
-> Vincent : Vérifier pourquoi le setInterval ne fonctionne pas sur les major
+> Vincent : Vérifier pourquoi le setInterval ne fonctionne pas sur les villes : l'heure ne se met pas à jour toute seule
 >
-> Vincent : Continuer le travail sur les villes mineures
+> Vincent : Pourquoi l'horloge analogique ne fonctionne que sur la première ville ?
 >
 > Vincent : ATTENTION a 2 données en dur dans 2 fonctions --> pb du undefined qui crash la fonction (search)
 
