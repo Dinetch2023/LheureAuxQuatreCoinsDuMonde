@@ -10,7 +10,10 @@
     --fourth-color: #eaeaea;
     --title-font: "Playfair Display", serif;
     --text-font: "Fira Sans", serif;
-    --img-city: "url(https://placehold.co/600x400)"
+    --img-city: "url(https://placehold.co/600x400)";
+    --hours-degres: rotate(0deg);
+    --minutes-degres: rotate(0deg);
+    --secondes-degres: rotate(0deg);
 }
 
 /* Styles globaux */
@@ -27,19 +30,175 @@
 
 body {
     background-color: var(--secondary-color);
-    /*SI ON VALIDE LE SCROLL EUX IL FAUT LES TEJ POUR LE SCROLL **/
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     height: 100%;
 }
 
-/* SI ON VALIDE LE SCROLL LUI IL FAUT LE TEJ POUR LE SCROLL **/
 main {
     width: 100vw;
 }
 
-/* SI ON VALIDE LE SCROLL TOUTE LA NAV FAUT LES TEJ POUR LE SCROLL **/
+
+/* Style clock analogique  */
+.clock {
+    position: relative;
+    width: 15rem;
+    height: 15rem;
+    background-color: white;
+    border-radius: 100%;
+    border: 4px solid black;
+
+}
+
+.round {
+    position: absolute;
+    border-radius: 100%;
+    top: 47%;
+    left: 47%;
+    background-color: black;
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.minute {
+    position: absolute;
+    top: 16%;
+    left: 48.7%;
+    width: 4px;
+    background-color: black;
+    height: 80px;
+    /* change l'origine de l'axe de rotation */
+    transform-origin: 50% 100%;
+    transform: var(--minutes-degres);
+    border-radius: 4px;
+}
+
+.hour {
+    position: absolute;
+    top: 27.8%;
+    left: 49%;
+    width: 4px;
+    background-color: black;
+    height: 50px;
+    /* change l'origine de l'axe de rotation */
+    transform-origin: 50% 100%;
+    transform: var(--hour-degres);
+    border-radius: 4px;
+}
+
+.second {
+    position: absolute;
+    top: 10%;
+    left: 49%;
+    width: 1px;
+    background-color: brown;
+    height: 90px;
+    /* change l'origine de l'axe de rotation */
+    transform-origin: 50% 100%;
+    transform: var(--second-degres);
+    border-radius: 4px;
+}
+
+.clock div:nth-of-type(1) {
+    /* Place les les unes sur les autres sur le meme axe et left les positionne */
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(0deg);
+}
+
+.clock div:nth-of-type(2) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(30deg);
+}
+
+.clock div:nth-of-type(3) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(60deg);
+}
+
+.clock div:nth-of-type(4) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(90deg);
+}
+
+.clock div:nth-of-type(5) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(120deg);
+}
+
+.clock div:nth-of-type(6) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(150deg);
+}
+
+.clock div:nth-of-type(7) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(180deg);
+}
+
+.clock div:nth-of-type(8) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(210deg);
+}
+
+.clock div:nth-of-type(9) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(240deg);
+}
+
+.clock div:nth-of-type(10) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(270deg);
+}
+
+.clock div:nth-of-type(11) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(300deg);
+}
+
+.clock div:nth-of-type(12) {
+    position: absolute;
+    left: 45%;
+    height: 100%;
+    padding: 0.3rem;
+    transform: rotate(330deg);
+}
+
+
 /* Styles header */
 header {
     background-color: var(--primary-color);
@@ -77,7 +236,7 @@ nav ul {
     line-height: 3.5rem;
 }
 
-.navMobile {
+/* .navMobile {
     display: block;
     padding: 0.5rem;
     border-radius: 20rem;
@@ -87,12 +246,7 @@ nav ul {
     display: flex;
     flex-direction: column;
     gap: 3.8rem;
-}
-
-.navDesktop {
-    display: none;
-}
-
+} 
 
 .roundNav {
     border-radius: 100%;
@@ -100,6 +254,13 @@ nav ul {
     width: 2rem;
     height: 2rem;
 }
+
+*/
+
+.navDesktop {
+    display: none;
+}
+
 
 li a {
     display: block;
@@ -110,9 +271,9 @@ li a {
 
 
 @media screen and (min-width:992px ) {
-    .navMobile {
+    /* .navMobile {
         display: none;
-    }
+    } */
 
     .navDesktop {
         display: inline-block;
@@ -172,14 +333,15 @@ h1 {
     font-family: var(--text-font);
 }
 
-/* styles section villes majeures */
 
+
+
+/* styles section villes majeures */
 h2 {
     font-family:  var(--text-font);
     
 }
 
-/* SI ON VALIDE LE SCROLL ON DOIT AJOUTER CE SELECTEUR **/
 .cities {
     height:100vh;
     overflow-y: scroll;
@@ -192,19 +354,14 @@ h2 {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
-/* SI ON VALIDE LE SCROLL ON DOIT AJOUTER CE SELECTEUR **/
 /* Hide scrollbar for Chrome, Safari and Opera */
 .cities::-webkit-scrollbar {
     display: none;
   }
 
 
-
-
 .city {
-    /* SI ON VALIDE LE SCROLL ON DOIT AJOUTER CETTE PROPRIETE **/
     scroll-snap-align: start;
-
     position: relative; 
     height: 100vh;
     width: 100%;
@@ -243,27 +400,14 @@ h2 {
 }
 
 
-#cityTest::before {    
-    content: "";
-    background-image: url("../assets/Le_Caire_jour.png");
-    background-size: cover;
-    background-position: center;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    opacity: 0.8;
-}
-
-
 @media screen and (min-width:992px ) {
     .mobile {
         display: none; 
     }
 }
 
-/* styles cards */
+
+/* styles cities mineures */
 .minor div{
     background-color: var(--secondary-color);
     padding:3rem 3rem 3rem 3rem;
@@ -302,8 +446,6 @@ h2 {
     }
 
 }
-
-
 
 .minor div article:nth-child(1) {
     grid-area: a;

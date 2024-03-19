@@ -1,5 +1,6 @@
 /********** PAETIE 1 RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
 const getCities = document.querySelector(".cities");
+const getMinor = document.querySelector(".minor");
 const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 //Création des données (DONNEES)
 const majorCities = [
@@ -9,7 +10,7 @@ const majorCities = [
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
         },
-        clock: false,
+        clock: true,
         status: "major"
     }, 
     {
@@ -18,7 +19,7 @@ const majorCities = [
             day: "../assets/Washington_jour.png", 
             night: "../assets/Washington_Nuit.png"
         },
-        clock: false,
+        clock: true,
         status: "major"
     }, 
     {
@@ -27,7 +28,7 @@ const majorCities = [
             day: "../assets/Mexico_jour.png", 
             night: "../assets/Mexico_nuit.png"
         },
-        clock: false,
+        clock: true,
         status: "major"
     }, 
     {
@@ -36,7 +37,7 @@ const majorCities = [
             day: "../assets/Sydney_jour.png", 
             night: "../assets/Sydney_nuit.png"
         },
-        clock: false,
+        clock: true,
         status: "major"
     }, 
     {
@@ -45,7 +46,7 @@ const majorCities = [
             day: "../assets/Tokyo_jour.png", 
             night: "../assets/Tokyo_nuit.png"
         },
-        clock: false,
+        clock: true,
         status: "major"
     }, 
     {
@@ -751,7 +752,6 @@ function setDateLocal(timesZones) {
 // Creation d'un tableaux d'objets (LA BDD) pour récupérer les données de la function (SOURCE --> BDD)
 // const formatedTimesZonesArray = setDateLocal(timesZones);
 
-// DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
 // Creation d'une fonction search pour matcher la MajorCity (DONNEES) avec la BDD (DONNEES in BDD ?)
 function search(nameKey, arrayBDD){
     for (let i=0; i < arrayBDD.length; i++) {
@@ -761,9 +761,9 @@ function search(nameKey, arrayBDD){
     }
 }
 
+
 /********** PARTIE 2: FORMATAGE DES DONNEES POUR LE TEMPLATING ************/
 
-// DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD #Chelou
 // STEP 1 - trouver l'index de la MajorCity (DONNEE) dans le tableau de BDD (INDEX DONNEES IN BDD ?)
 function updateDataArray(arrayToCheck, arrayBDD) {
     for (let i = 0; i < arrayToCheck.length; i++) {
@@ -783,9 +783,13 @@ function updateDataArray(arrayToCheck, arrayBDD) {
         // Les mêmes info que précédent mais pour l'horloge analogique
         arrayToCheck[i].hoursDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.hours;
         arrayToCheck[i].minutesDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.minutes;
-        arrayToCheck[i].secondsDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.seconds;   
+        arrayToCheck[i].secondsDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.seconds;  
     }
 }
+
+
+
+// Mecanique d'initialisation de la rotation en fonction du tems converti en degrés
 
 
 
@@ -801,7 +805,10 @@ function createBlock (city){
 
     if (city.status === "major") {
 
+        // Logique nav --> marche pas forcément --> check ID undifenied
+        // const nav = document.querySelector(".navDesktop");
         // const ul = document.createElement("ul"); 
+        // nav.appendChild(ul);
         
         // const li = document.createElement("li");
         // li.innerHTML = `<a href="#${city.value}">${city.name}</a>`
@@ -832,9 +839,25 @@ function createBlock (city){
 
             article.appendChild(p)
         } else {
-            const div = document.createElement("div")
-            div.classList.add('clock');
-            div.innerHTML = `
+            const clock = document.createElement("div")
+            clock.classList.add('clock');
+
+            //On sélectionne les aiguilles
+            const hourHand = document.createElement('div');
+            hourHand.classList.add('hour');
+            const minuteHand = document.createElement('div');
+            minuteHand.classList.add('minute');
+            const secondHand = document.createElement('div');
+            secondHand.classList.add('second');
+            const round = document.createElement('div');
+            round.classList.add('round');
+
+
+            hourHand.style.setProperty('--hour-degres', `rotate(${city.hoursDegres}deg)`);
+            minuteHand.style.setProperty('--minute-degres', `rotate(${city.minutesDegres}deg)`);
+            secondHand.style.setProperty('--second-degres', `rotate(${city.secondsDegres}deg)`);
+
+            clock.innerHTML = `
             <div>12</div>
             <div>1</div>
             <div>2</div>
@@ -847,12 +870,12 @@ function createBlock (city){
             <div>9</div>
             <div>10</div>
             <div>11</div>
-            <div class="hour"></div>
-            <div class="minute"></div>
-            <div class="second"></div>
-            <div class="round"></div>
         `
-            article.appendChild(div)
+            article.appendChild(clock)
+            clock.appendChild(hourHand);
+            clock.appendChild(minuteHand);
+            clock.appendChild(secondHand);
+            clock.appendChild(round);
         }
         return article;
 
@@ -902,12 +925,13 @@ const minor = document.querySelector(".minor");
 
 setInterval(() => {
     updateDataArray(majorCities, setDateLocal(timesZones));
-    // updateDataArray(minorCities, setDateLocal(timesZones)); 
+    updateDataArray(minorCities, setDateLocal(timesZones)); 
     const local = document.querySelector("#userTimeZone");
     local.innerHTML = setDateLocal(timesZones)[0].dateLocal.dateLocal.split(":")[0];
     
     // Je réinialise le dom pour ajouter les nouvelles données de l'horloge
     getCities.innerHTML = "";
+    getMinor.innerHTML = "";
     
     // update les villes
     cities.appendChild(loopBlock(majorCities));
