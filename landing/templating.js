@@ -1,4 +1,5 @@
 /********** PAETIE 1 RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
+const getCities = document.querySelector(".cities");
 const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 //Création des données (DONNEES)
 const majorCities = [
@@ -8,7 +9,7 @@ const majorCities = [
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
         },
-        clock: true,
+        clock: false,
         status: "major"
     }, 
     {
@@ -695,10 +696,11 @@ const timesZones = [
 
 // Manipulation de la source pour y appliquer des valeurs de l'heure locale par TimeZone (SOURCE --> MAJ SOURCE)
 function setDateLocal(timesZones) {
+
     //set array empty to populate data
     const datesLocales = [];
     for (i = 0; i < timesZones.length; i++) {
-        const timeZone = timesZones[i];
+        let timeZone = timesZones[i];
 
         //Initialisation de la date puis ajout d'options pour la formater
         const date = new Date ();
@@ -747,7 +749,7 @@ function setDateLocal(timesZones) {
 }
 
 // Creation d'un tableaux d'objets (LA BDD) pour récupérer les données de la function (SOURCE --> BDD)
-const formatedTimesZonesArray = setDateLocal(timesZones);
+// const formatedTimesZonesArray = setDateLocal(timesZones);
 
 // DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
 // Creation d'une fonction search pour matcher la MajorCity (DONNEES) avec la BDD (DONNEES in BDD ?)
@@ -761,26 +763,30 @@ function search(nameKey, arrayBDD){
 
 /********** PARTIE 2: FORMATAGE DES DONNEES POUR LE TEMPLATING ************/
 
-// DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD
+// DEMANDER A ANTHONY --> PATH EN DUR --> RESOLU A CAUSE DU UNDEFENIED DANS LA BDD #Chelou
 // STEP 1 - trouver l'index de la MajorCity (DONNEE) dans le tableau de BDD (INDEX DONNEES IN BDD ?)
 function updateDataArray(arrayToCheck, arrayBDD) {
     for (let i = 0; i < arrayToCheck.length; i++) {
+        // J'ajoute un index à mon objet de ma cities
         arrayToCheck[i].indexBDD = search(arrayToCheck[i].name, arrayBDD); 
+
+        // J'ajoute les informations de mon horloge
         arrayToCheck[i].hours = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.hours;
         arrayToCheck[i].minutes = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.minutes;
         arrayToCheck[i].secondes = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.secondes;
+
+        // J'ajoute la valeur UTC à mon objet
         arrayToCheck[i].utc = arrayBDD[arrayToCheck[i].indexBDD].dateLocal.utc;
         arrayToCheck[i].name = arrayBDD[arrayToCheck[i].indexBDD].timeZone.area;
         arrayToCheck[i].value = arrayBDD[arrayToCheck[i].indexBDD].timeZone.area.toLowerCase();
+
+        // Les mêmes info que précédent mais pour l'horloge analogique
         arrayToCheck[i].hoursDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.hours;
         arrayToCheck[i].minutesDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.minutes;
-        arrayToCheck[i].secondsDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.seconds;
-        
+        arrayToCheck[i].secondsDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.seconds;   
     }
 }
 
-updateDataArray(majorCities, formatedTimesZonesArray);
-updateDataArray(minorCities, formatedTimesZonesArray); 
 
 
 // STEP 2 - Récupérer la donnée d'heure et de minute de la BDD grâce à mon index de DONNEE  (DONNEE UPDATED --> INJECTION HTML)
@@ -788,12 +794,20 @@ updateDataArray(minorCities, formatedTimesZonesArray);
 
 // Ajout de l'heure local du user dans le HTML
 const local = document.querySelector("#userTimeZone");
-local.innerHTML = formatedTimesZonesArray[0].dateLocal.dateLocal.split(":")[0];
+local.innerHTML = setDateLocal(timesZones)[0].dateLocal.dateLocal.split(":")[0];
 
 // 1) On crée la logique de creation d'un bloc
 function createBlock (city){
 
     if (city.status === "major") {
+
+        // const ul = document.createElement("ul"); 
+        
+        // const li = document.createElement("li");
+        // li.innerHTML = `<a href="#${city.value}">${city.name}</a>`
+        // ul.appendChild(li);
+
+
 
         const article = document.createElement("article");
         article.classList.add("city");
@@ -805,18 +819,18 @@ function createBlock (city){
             article.style.setProperty('--img-city', `url(${city.images.night})`)
         }
 
-
         const h2 = document.createElement("h2")
         h2.textContent = city.name;
 
         article.appendChild(h2);
 
+        
         if (city.clock === false) {
-        const p = document.createElement("p")
-        p.classList.add('time');
-        p.innerHTML = `${city.hours}h${city.minutes}`
+            const p = document.createElement("p")
+            p.classList.add('time');
+            p.innerHTML = `${city.hours ? city.hours : "00"}h${city.minutes ? city.minutes : "00"}`
 
-        article.appendChild(p)
+            article.appendChild(p)
         } else {
             const div = document.createElement("div")
             div.classList.add('clock');
@@ -884,12 +898,28 @@ function loopBlock (array) {
 }
 
 const cities = document.querySelector(".cities");
-cities.appendChild(loopBlock(majorCities));
-
 const minor = document.querySelector(".minor");
+
+setInterval(() => {
+    updateDataArray(majorCities, setDateLocal(timesZones));
+    // updateDataArray(minorCities, setDateLocal(timesZones)); 
+    const local = document.querySelector("#userTimeZone");
+    local.innerHTML = setDateLocal(timesZones)[0].dateLocal.dateLocal.split(":")[0];
+    
+    // Je réinialise le dom pour ajouter les nouvelles données de l'horloge
+    getCities.innerHTML = "";
+    
+    // update les villes
+    cities.appendChild(loopBlock(majorCities));
+    minor.appendChild(loopBlock(minorCities));
+}, 1000);
+
+cities.appendChild(loopBlock(majorCities));
 minor.appendChild(loopBlock(minorCities));
 
 
+/**
+ * Ajout d'un setTimeout d'une second pour avoir le temps d'accèder aux horloges du monde entier :)
+ * Un petit loader avec l'html <progress />
+ */
 
-
-console.log(majorCities)
