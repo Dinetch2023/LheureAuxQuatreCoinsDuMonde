@@ -36,7 +36,7 @@ body {
 
 /* SI ON VALIDE LE SCROLL LUI IL FAUT LE TEJ POUR LE SCROLL **/
 main {
-    width: 80vw!important;
+    width: 100vw;
 }
 
 /* SI ON VALIDE LE SCROLL TOUTE LA NAV FAUT LES TEJ POUR LE SCROLL **/
@@ -44,10 +44,21 @@ main {
 header {
     background-color: var(--primary-color);
     display: flex;
-    width: 20vw;
+    width: 0vw;
     height: auto;
     flex-direction: column;
     align-items: center;
+}
+
+
+@media screen and (min-width: 992px) {
+    header {
+        width: 20vw;
+    }
+    main {
+        width: 80vw!important;
+    }
+    
 }
 
 nav {
