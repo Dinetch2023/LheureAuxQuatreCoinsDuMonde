@@ -1,6 +1,7 @@
 /********** PAETIE 1 RECUPERATION DE TIMESZONES PUIS CALCUL DE LEUR HEURE ************/
 const getCities = document.querySelector(".cities");
 const getMinor = document.querySelector(".minor");
+const getNavigation = document.querySelector("nav");
 const userTimeZone = new Intl.DateTimeFormat().resolvedOptions().timeZone
 //Création des données (DONNEES)
 const majorCities = [
@@ -784,13 +785,19 @@ function updateDataArray(arrayToCheck, arrayBDD) {
         arrayToCheck[i].hoursDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.hours;
         arrayToCheck[i].minutesDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.minutes;
         arrayToCheck[i].secondsDegres = arrayBDD[arrayToCheck[i].indexBDD].degres.seconds;  
+
+        // switch général horloge ou analogique
+        const input = document.querySelector("input[name=horlogerie]");
+        input.addEventListener('change', function() {
+            if (input.checked) {
+                arrayToCheck[i].clock = true;
+            } else {
+                arrayToCheck[i].clock = false;
+            }
+            });
+
     }
 }
-
-
-
-// Mecanique d'initialisation de la rotation en fonction du tems converti en degrés
-
 
 
 // STEP 2 - Récupérer la donnée d'heure et de minute de la BDD grâce à mon index de DONNEE  (DONNEE UPDATED --> INJECTION HTML)
@@ -805,14 +812,13 @@ function createBlock (city){
 
     if (city.status === "major") {
 
-        // Logique nav --> marche pas forcément --> check ID undifenied
-        // const nav = document.querySelector(".navDesktop");
-        // const ul = document.createElement("ul"); 
-        // nav.appendChild(ul);
+        const nav = document.querySelector(".navDesktop");
+        const ul = document.createElement("ul"); 
+        nav.appendChild(ul);
         
-        // const li = document.createElement("li");
-        // li.innerHTML = `<a href="#${city.value}">${city.name}</a>`
-        // ul.appendChild(li);
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="#${city.value}">${city.name}</a>`
+        ul.appendChild(li);
 
 
 
@@ -853,9 +859,10 @@ function createBlock (city){
             round.classList.add('round');
 
 
-            hourHand.style.setProperty('--hour-degres', `rotate(${city.hoursDegres}deg)`);
-            minuteHand.style.setProperty('--minute-degres', `rotate(${city.minutesDegres}deg)`);
-            secondHand.style.setProperty('--second-degres', `rotate(${city.secondsDegres}deg)`);
+             //On set nos degres
+            hourHand.style.setProperty('--hours-degres', `rotate(${city.hoursDegres}deg)`);
+            minuteHand.style.setProperty('--minutes-degres', `rotate(${city.minutesDegres}deg)`);
+            secondHand.style.setProperty('--seconds-degres', `rotate(${city.secondsDegres}deg)`);
 
             clock.innerHTML = `
             <div>12</div>
@@ -877,6 +884,11 @@ function createBlock (city){
             clock.appendChild(secondHand);
             clock.appendChild(round);
         }
+
+        
+
+
+
         return article;
 
     } else if (city.status === "minor") {
@@ -929,9 +941,10 @@ setInterval(() => {
     const local = document.querySelector("#userTimeZone");
     local.innerHTML = setDateLocal(timesZones)[0].dateLocal.dateLocal.split(":")[0];
     
-    // Je réinialise le dom pour ajouter les nouvelles données de l'horloge
+    // Je réinialise le dom pour ajouter les nouvelles données de l'horloge / de la nav / 
     getCities.innerHTML = "";
     getMinor.innerHTML = "";
+    getNavigation.innerHTML = "";
     
     // update les villes
     cities.appendChild(loopBlock(majorCities));
@@ -946,4 +959,3 @@ minor.appendChild(loopBlock(minorCities));
  * Ajout d'un setTimeout d'une second pour avoir le temps d'accèder aux horloges du monde entier :)
  * Un petit loader avec l'html <progress />
  */
-
