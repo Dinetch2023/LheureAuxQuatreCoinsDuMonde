@@ -11,7 +11,7 @@ const majorCities = [
             day: "../assets/Paris_jour.png", 
             night: "../assets/Paris_nuit.png"
         },
-        clock: true,
+        clock: false,
         status: "major"
     }, 
     {
@@ -20,7 +20,7 @@ const majorCities = [
             day: "../assets/Washington_jour.png", 
             night: "../assets/Washington_Nuit.png"
         },
-        clock: true,
+        clock: false,
         status: "major"
     }, 
     {
@@ -29,7 +29,7 @@ const majorCities = [
             day: "../assets/Mexico_jour.png", 
             night: "../assets/Mexico_nuit.png"
         },
-        clock: true,
+        clock: false,
         status: "major"
     }, 
     {
@@ -38,7 +38,7 @@ const majorCities = [
             day: "../assets/Sydney_jour.png", 
             night: "../assets/Sydney_nuit.png"
         },
-        clock: true,
+        clock: false,
         status: "major"
     }, 
     {
@@ -47,7 +47,7 @@ const majorCities = [
             day: "../assets/Tokyo_jour.png", 
             night: "../assets/Tokyo_nuit.png"
         },
-        clock: true,
+        clock: false,
         status: "major"
     }, 
     {
