@@ -18,7 +18,7 @@ const majorCities = [
         name: "Chicago", 
         images: {
             day: "../assets/Chicago_jour.png", 
-            night: "../assets/Chicago_Nuit.png"
+            night: "../assets/Chicago_nuit.png"
         },
         clock: false,
         status: "major"
