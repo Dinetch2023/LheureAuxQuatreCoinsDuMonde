@@ -319,7 +319,7 @@ h1 {
     padding: 30px 30px 30px 0;
 }
 
-.titleHome p {
+.titleHome .intro {
     color: var(--primary-color);
     font-family: var(--text-font);
     font-size: 1.5rem;
@@ -328,12 +328,19 @@ h1 {
     word-break: break-word;
 }
 
-.titleHome p span {
+.titleHome .intro span {
     font-size: 4rem;
     font-family: var(--text-font);
 }
 
+.label {
+    font-size: 1rem;
+    margin: 0.8rem 0 0;
+}
 
+.label a {
+    color: var(--primary-color);
+}
 
 
 /* styles section villes majeures */
