@@ -17,8 +17,8 @@ const majorCities = [
     {
         name: "Chicago", 
         images: {
-            day: "../assets/Washington_jour.png", 
-            night: "../assets/Washington_Nuit.png"
+            day: "../assets/Chicago_jour.png", 
+            night: "../assets/Chicago_Nuit.png"
         },
         clock: false,
         status: "major"
@@ -26,8 +26,8 @@ const majorCities = [
     {
         name: "Johannesburg", 
         images: {
-            day: "../assets/Mexico_jour.png", 
-            night: "../assets/Mexico_nuit.png"
+            day: "../assets/Johannesburg_jour.png", 
+            night: "../assets/Johannesburg_nuit.png"
         },
         clock: false,
         status: "major"
@@ -53,8 +53,8 @@ const majorCities = [
     {
         name: "Casablanca", 
         images: {
-            day: "../assets/Le_Caire_jour.png", 
-            night: "../assets/Le_Caire_nuit.png"
+            day: "../assets/Casablanca_jour.png", 
+            night: "../assets/Casablanca_nuit.png"
         },
         clock: false,
         status: "major"
@@ -64,8 +64,8 @@ const minorCities = [
     {
         name: "Baku", 
         images: {
-            day: "../assets/Paris_jour.png", 
-            night: "../assets/Paris_nuit.png"
+            day: "../assets/Baku_jour.png", 
+            night: "../assets/Baku_nuit.png"
         },
         clock: false,
         status: "minor"
@@ -73,8 +73,8 @@ const minorCities = [
     {
         name: "Cancun", 
         images: {
-            day: "../assets/Paris_jour.png", 
-            night: "../assets/Paris_nuit.png"
+            day: "../assets/Cancun_jour.png", 
+            night: "../assets/Cancun_nuit.png"
         },
         clock: false,
         status: "minor"
@@ -82,8 +82,8 @@ const minorCities = [
     {
         name: "Auckland", 
         images: {
-            day: "../assets/Paris_jour.png", 
-            night: "../assets/Paris_nuit.png"
+            day: "../assets/Auckland_jour.png", 
+            night: "../assets/Auckland_nuit.png"
         },
         clock: false,
         status: "minor"
@@ -91,8 +91,8 @@ const minorCities = [
     {
         name: "Reykjavik",
         images: {
-            day: "../assets/Paris_jour.png", 
-            night: "../assets/Paris_nuit.png"
+            day: "../assets/Reykjavik_jour.png", 
+            night: "../assets/Reykjavik_nuit.png"
         },
         clock: false,
         status: "minor"
