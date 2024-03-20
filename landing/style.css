@@ -236,26 +236,6 @@ nav ul {
     line-height: 3.5rem;
 }
 
-/* .navMobile {
-    display: block;
-    padding: 0.5rem;
-    border-radius: 20rem;
-}
-
-.navMobile ul {
-    display: flex;
-    flex-direction: column;
-    gap: 3.8rem;
-} 
-
-.roundNav {
-    border-radius: 100%;
-    background-color: var(--secondary-color);
-    width: 2rem;
-    height: 2rem;
-}
-
-*/
 
 .navDesktop {
     display: none;
@@ -271,9 +251,6 @@ li a {
 
 
 @media screen and (min-width:992px ) {
-    /* .navMobile {
-        display: none;
-    } */
 
     .navDesktop {
         display: inline-block;
@@ -281,7 +258,7 @@ li a {
 
 }
 
-.home {
+#accueil {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -291,8 +268,8 @@ li a {
 .logo {
     width: 15vw;
     height: auto;
-    margin: 15px;
-    max-width: 200px;
+    margin-left: 15px;
+    max-width: 150px;
 }
 
 .titleHome {
@@ -300,7 +277,7 @@ li a {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin: 3rem;
+    margin: 1.5rem 3rem 3rem;
     
 }
 
@@ -316,7 +293,7 @@ h1 {
    color: var(--primary-color);
     font-size: max(6vw, 2.25rem);
     font-family: var(--title-font);
-    padding: 30px 30px 30px 0;
+    padding: 0 30px 30px 0;
 }
 
 .titleHome .intro {
@@ -352,8 +329,6 @@ h2 {
 .cities {
     height:100vh;
     overflow-y: scroll;
-    scroll-snap-type: mandatory;
-    scroll-snap-points-y: repeat(3rem);
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
     position: relative;
