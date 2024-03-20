@@ -367,6 +367,10 @@ h2 {
     display: none;
   }
 
+progress{
+    position: relative;
+    margin-top: 0.8rem;
+}
 
 .city {
     scroll-snap-align: start;

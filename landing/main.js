@@ -270,10 +270,20 @@ function createBlock (city){
         
         if (city.clock === false) {
             const p = document.createElement("p")
+            const progress = document.createElement("progress");
             p.classList.add('time');
-            p.innerHTML = `${city.hours ? city.hours : "00"}h${city.minutes ? city.minutes : "00"}`
 
-            article.appendChild(p)
+            if (city.hours) {
+                p.innerHTML = `${city.hours}h${city.minutes}`
+                article.appendChild(p);
+            } else {
+                progress.innerHTML = `<progress max="100" value="" id="myProgress"></progress>`
+                article.appendChild(progress);
+            };
+
+
+
+           
         } else {
             const clock = document.createElement("div")
             clock.classList.add('clock');
@@ -385,7 +395,10 @@ setInterval(() => {
 cities.appendChild(loopBlock(majorCities));
 minor.appendChild(loopBlock(minorCities));
 
+//let valueProgress = document.getElementById("myProgress");
 
+
+// setTimeout(fct, 1.0*1000);
 /**
  * Ajout d'un setTimeout d'une second pour avoir le temps d'accèder aux horloges du monde entier :)
  * Un petit loader avec l'html <progress />
