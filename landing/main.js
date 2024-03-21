@@ -180,9 +180,42 @@ function setDateLocal(timesZones) {
     return datesLocales
 }
 
-// Creation d'un tableaux d'objets (LA BDD) pour récupérer les données de la function (SOURCE --> BDD)
-// const formatedTimesZonesArray = setDateLocal(timesZones);
+// Automatisation du select des villes 
+function createSelect(){
+    const select = document.querySelector("#city-select"); 
+    const result = document.querySelector(".result");
 
+
+    for (let i = 0; i < majorCities.length; i++) {
+        const option = document.createElement("option");
+        option.setAttribute("value", majorCities[i].name.toLowerCase());
+        option.innerHTML = `${majorCities[i].name}`;
+        select.appendChild(option);
+
+    }
+    select.addEventListener("change", (event) => {
+    result.innerHTML = `<a href="#${event.target.value.toLowerCase()}">You like ${event.target.value}</a>`;
+    });
+}
+
+createSelect();
+
+// Automatisation du select des villes 
+function createNav () {
+    const nav = document.querySelector(".navDesktop");
+    const ul = document.createElement("ul"); 
+    nav.appendChild(ul);
+    ul.innerHTML = `<li><a href="#accueil">Accueil</a></li>`;
+    
+    for (let i = 0; i < majorCities.length; i++) {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="#${majorCities[i].name.toLowerCase()}">${majorCities[i].name}</a>`;
+        ul.appendChild(li);
+    }
+}
+
+createNav();
+    
 // Creation d'une fonction search pour matcher la MajorCity (DONNEES) avec la BDD (DONNEES in BDD ?)
 function search(nameKey, arrayBDD){
     for (let i=0; i < arrayBDD.length; i++) {
@@ -242,16 +275,7 @@ function createBlock (city){
 
     if (city.status === "major") {
 
-        const nav = document.querySelector(".navDesktop");
-        const ul = document.createElement("ul"); 
-        nav.appendChild(ul);
-        
-        const li = document.createElement("li");
-        li.innerHTML = `<a href="#${city.value}">${city.name}</a>`
-        ul.appendChild(li);
-
-
-
+    
         const article = document.createElement("article");
         article.classList.add("city");
         article.setAttribute("id", city.value);
@@ -385,7 +409,6 @@ setInterval(() => {
     // Je réinialise le dom pour ajouter les nouvelles données de l'horloge / de la nav / 
     getCities.innerHTML = "";
     getMinor.innerHTML = "";
-    getNavigation.innerHTML = "";
     
     // update les villes
     cities.appendChild(loopBlock(majorCities));
