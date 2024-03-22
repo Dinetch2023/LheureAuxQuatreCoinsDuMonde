@@ -280,7 +280,19 @@ li a {
     
 }
 
-@media screen and (min-width:992px ) {
+.flex-accueil {
+    display: flex;
+    flex-direction: column;
+    margin: 1.2rem;
+}
+
+.horloge {
+    display: flex;
+    flex-direction: column;
+    gap:20px 0;
+}
+
+@media screen and (min-width:992px) {
     .titleHome{
     margin-left: 10rem;
     }
@@ -292,20 +304,17 @@ li a {
         margin: 1.2rem;
     }
 
+    .horloge {
+        display: flex;
+        flex-direction: row;
+        gap:0 20px;
+    }
+
 
 }
 
-.flex-accueil {
-    display: flex;
-    flex-direction: column;
-    margin: 1.2rem;
-}
 
-.horloge {
-    display: flex;
-    flex-direction: row;
-    gap:0 20px;
-}
+
 
 h1 {
    color: var(--primary-color);
