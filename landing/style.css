@@ -285,15 +285,22 @@ li a {
     margin-left: 10rem;
     }
 
+    .flex-accueil {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 1.2rem;
+    }
+
 
 }
 
 .flex-accueil {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 1.2rem;
 }
+
 .horloge {
     display: flex;
     flex-direction: row;
@@ -342,6 +349,7 @@ select{
 
 #city-select {
     width: 20vw;
+    min-width: 10rem;
     padding: 0.25rem;
     border-style: none;
 }
