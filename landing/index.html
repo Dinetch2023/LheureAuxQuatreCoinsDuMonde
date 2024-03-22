@@ -8,36 +8,45 @@
 		<meta name="description" content="Quelle heure est il aux quatres coins du monde ? Découvrez le en parcourant les différentes villes">
 	</head>
 	<body>
-
-		<header >
+		<header>
 			<nav class="navDesktop">
 			</nav>
 		</header>
 		<main>
-			<section id="accueil">
-				<img src="../assets/logo_jour.png" alt="Le logo des meilleurs" class="logo">
+			<div id="accueil">
+				<div class="flex-accueil">
+					<img src="../assets/logo_jour.png" alt="Le logo des meilleurs" class="logo">
+					<!-- Début bloc switch -->
+					<div class="horloge">
+						<p class="info"><a href="#caroussel">Accéder aux carrousel de villes</a> | Horloges analogiques </p>
+						<label class="switch">
+							<input type="checkbox" name="horlogerie">
+							<span></span>
+						</label>
+					</div>
+					<!-- Fin bloc switch -->
+				</div>
 				<article class="titleHome">
-					<label for="city-select">Choisissez une ville :</label>
-					<select name="select" id="city-select">
-						<option value="">--Please choose an option--</option>
-					</select>
-					<div class="result"></div>
 					<h1>L'heure aux quatre coins du monde !</h1>
 					<p class="intro">
 						Chez vous il est : 
 						<span class="time" id="userTimeZone"></span>
 					</p>
-					<p class="label">Horloges analogiques | <a href="#caroussel">Accéder aux carrousel de villes</a></p>
-					<label class="switch">
-						<input type="checkbox" name="horlogerie">
-						<span></span>
-					</label>
+					<!-- Début bloc select -->
+					<div class="selection-bar">
+						<label for="city-select">Choisissez une ville :</label>
+						<select name="select" id="city-select">
+							<option value="">-- Votre sélection --</option>
+						</select>
+						<p class="result"></p>
+					</div>
+					<!-- Fin bloc select -->
 				</article>
-			</section>
-			<section class="cities" id="caroussel">
-			</section>
-			<section class="minor">
-			</section>
+			</div>
+			<div class="cities" id="caroussel">
+			</div>
+			<div class="minor">
+			</div>
 			<footer>
 				<p><a href="#accueil">Retourner à l'accueil</a></p>
 				<p>Fait avec amour par l’équipe DragonFly</p>

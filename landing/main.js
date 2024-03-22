@@ -188,19 +188,19 @@ function createSelect(){
 
     for (let i = 0; i < majorCities.length; i++) {
         const option = document.createElement("option");
-        option.setAttribute("value", majorCities[i].name.toLowerCase());
+        option.setAttribute("value", majorCities[i].name);
         option.innerHTML = `${majorCities[i].name}`;
         select.appendChild(option);
 
     }
     select.addEventListener("change", (event) => {
-    result.innerHTML = `<a href="#${event.target.value.toLowerCase()}">You like ${event.target.value}</a>`;
+    result.innerHTML = `<a href="#${event.target.value.toLowerCase()}">Accéder à ${event.target.value}</a>`;
     });
 }
 
 createSelect();
 
-// Automatisation du select des villes 
+// Automatisation de la nav des villes 
 function createNav () {
     const nav = document.querySelector(".navDesktop");
     const ul = document.createElement("ul"); 
