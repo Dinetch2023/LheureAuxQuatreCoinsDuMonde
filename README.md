@@ -1,9 +1,3 @@
-# Avancement
-> [!IMPORTANT]
-> Vincent : Vérifier pourquoi le setInterval ne fonctionne pas sur les villes : l'heure ne se met pas à jour toute seule : résolu --> le fait de sauvegarder la fonction dans une variable la figeait
-> 
-> Vincent : ATTENTION a 2 données en dur dans 2 fonctions --> pb du undefined qui crash la fonction (search)
-
 # DragonFly - World Clock 🕑
 ![logo](https://github.com/VncPsq/DragonFly/blob/main/assets/logo_jour.png?raw=true)
 
@@ -28,17 +22,11 @@ Permettre à l'utilisateur de sélectionner des villes à afficher sur l'horloge
   - Sélection des villes pour démarrer le projet
   - Sélections des images jour/nuit
 
-[ ] Codage
+[x] Codage
   - Valider le corps HTML
   - Valider le corps CSS
   - Valider les mécaniques JS
 
-[ ] Review
+[x] Review
   - 3WC
   - Relecture et clean du code
-
-/****************** GUIDE CONSTRUIRE LOGIQUE FONCTION **************/
-// Données en entrée sur papier : Que cherche t'on a manipuler ? 
-// Données en sortie sur papier : Que cherche t'on a obtenir ? 
-// idée de base : boucler --> donc focus sur elle. Que cherche t'on a faire ? 
-// init d'une constante donc --> on affecte la valeur, ici notre date local dans la boucle. Comment l'executer ? 
